@@ -9,6 +9,24 @@
   font-size: 12px;
 }
 
+.scenario-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  padding: 4px 10px;
+}
+
+.scenario-controls select {
+  min-height: 30px;
+  padding: 4px 7px;
+  border: 1px solid #9aaab5;
+  border-radius: 3px;
+  background: #fff;
+  color: #17212b;
+  font-size: 12px;
+}
+
 .scenario-header {
   display: flex;
   align-items: center;
@@ -46,5 +64,7 @@
 
 @media (max-width: 780px) {
   #scenario-list { max-width: 100%; }
+  .scenario-controls { width: 100%; margin-left: 0; flex-wrap: wrap; padding: 4px 8px; }
+  .scenario-controls select { flex: 1 1 145px; }
   .scenario-row { grid-template-columns: 1fr; }
 }

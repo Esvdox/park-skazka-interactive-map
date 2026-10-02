@@ -37,6 +37,10 @@ const elements = {
   additional: document.querySelector("#additional-parameters"),
   saveMessage: document.querySelector("#save-message"),
   scenarioList: document.querySelector("#scenario-list"),
+  scenarioType: document.querySelector("#scenario-type"),
+  scenarioWeather: document.querySelector("#scenario-weather"),
+  scenarioMaintenance: document.querySelector("#scenario-maintenance"),
+  scenarioRepair: document.querySelector("#scenario-repair"),
   scenarioMatrix: document.querySelector("#scenario-matrix"),
 };
 
@@ -93,12 +97,17 @@ const SCENARIO_FIELDS = [
 
 function normalizeScenarios(value, layer) {
   const property = propertyForLayer(layer);
+  const normalizeCondition = (group, activeKey) => {
+    const source = value?.[group];
+    if (typeof source === "string") return { normal: "open", [activeKey]: source };
+    return { normal: source?.normal ?? "open", [activeKey]: source?.[activeKey] ?? "open" };
+  };
   return {
     temperature: Object.fromEntries(TEMPERATURE_SCENARIOS.map((key) => [key, value?.temperature?.[key] ?? (property?.temperatureWork?.[`до ${key}`] === false ? "closed" : "open")])),
     type: Object.fromEntries(TYPE_SCENARIOS.map((key) => [key, value?.type?.[key] ?? "open"])),
-    maintenance: value?.maintenance ?? "open",
-    repair: value?.repair ?? "open",
-    weather: value?.weather ?? "open",
+    maintenance: normalizeCondition("maintenance", "maintenance"),
+    repair: normalizeCondition("repair", "repair"),
+    weather: normalizeCondition("weather", "weather"),
   };
 }
 
@@ -113,15 +122,22 @@ function isTemperatureAllowed(layer) {
   return layerConfig(layer).scenarios.temperature[String(state.temperature)] === "open";
 }
 
+function syncScenarioControls() {
+  if (elements.scenarioType) elements.scenarioType.value = state.scenario.type;
+  if (elements.scenarioWeather) elements.scenarioWeather.value = state.scenario.weather;
+  if (elements.scenarioMaintenance) elements.scenarioMaintenance.value = state.scenario.maintenance;
+  if (elements.scenarioRepair) elements.scenarioRepair.value = state.scenario.repair;
+}
+
 function isScenarioAllowed(layer) {
   const config = layerConfig(layer);
   const property = propertyForLayer(layer);
   const selectedType = state.scenario.type;
   const typeStatus = selectedType === "all"
     || (property?.purpose === selectedType && config.scenarios.type[selectedType] === "open");
-  const maintenanceStatus = state.scenario.maintenance === "normal" || config.scenarios.maintenance === "open";
-  const repairStatus = state.scenario.repair === "normal" || config.scenarios.repair === "open";
-  const weatherStatus = state.scenario.weather === "normal" || config.scenarios.weather === "open";
+  const maintenanceStatus = config.scenarios.maintenance[state.scenario.maintenance] === "open";
+  const repairStatus = config.scenarios.repair[state.scenario.repair] === "open";
+  const weatherStatus = config.scenarios.weather[state.scenario.weather] === "open";
   return typeStatus && maintenanceStatus && repairStatus && weatherStatus;
 }
 
@@ -335,11 +351,11 @@ function saveSettings(event) {
   const additional = [...elements.additional.querySelectorAll(".parameter-row")]
     .map((row) => ({ key: row.querySelector(".parameter-key").value.trim(), value: row.querySelector(".parameter-value").value.trim() }))
     .filter((item) => item.key);
-  const scenarios = { temperature: {}, type: {}, maintenance: "open", repair: "open", weather: "open" };
+  const scenarios = { temperature: {}, type: {}, maintenance: { normal: "open", maintenance: "open" }, repair: { normal: "open", repair: "open" }, weather: { normal: "open", weather: "open" } };
   elements.scenarioMatrix?.querySelectorAll("select").forEach((select) => {
     const group = select.dataset.scenarioGroup;
     const key = select.dataset.scenarioKey;
-    if (["maintenance", "repair", "weather"].includes(group)) scenarios[group] = select.value;
+    if (["maintenance", "repair", "weather"].includes(group)) scenarios[group][key] = select.value;
     else scenarios[group][key] = select.value;
   });
   state.configs[layer.id] = { name: elements.settingName.value.trim() || layer.name, conditions: elements.settingConditions.value.trim(), minTempC: elements.settingMinTemp.value === "" ? null : Number(elements.settingMinTemp.value), additional, scenarios };
@@ -445,6 +461,7 @@ async function init() {
     if (value === "default") {
       state.scenario = { type: "all", maintenance: "normal", repair: "normal", weather: "normal" };
       state.temperature = null;
+      syncScenarioControls();
       renderLayers();
       return;
     }
@@ -457,8 +474,13 @@ async function init() {
     } else if (group === "maintenance" || group === "repair" || group === "weather") {
       state.scenario[group] = key;
     }
+    syncScenarioControls();
     renderLayers();
   });
+  elements.scenarioType?.addEventListener("change", () => { state.scenario.type = elements.scenarioType.value; renderLayers(); });
+  elements.scenarioWeather?.addEventListener("change", () => { state.scenario.weather = elements.scenarioWeather.value; renderLayers(); });
+  elements.scenarioMaintenance?.addEventListener("change", () => { state.scenario.maintenance = elements.scenarioMaintenance.value; renderLayers(); });
+  elements.scenarioRepair?.addEventListener("change", () => { state.scenario.repair = elements.scenarioRepair.value; renderLayers(); });
   document.querySelector("#zoom-in").addEventListener("click", () => setZoom(state.zoom * 1.25));
   document.querySelector("#zoom-out").addEventListener("click", () => setZoom(state.zoom / 1.25));
   elements.zoomValue.addEventListener("click", fitMap);
