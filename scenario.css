@@ -12,27 +12,37 @@
 .scenario-controls {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
   margin-left: auto;
-  padding: 4px 10px;
+  padding: 0;
 }
 
 .scenario-button-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 0;
+  border: 1px solid #9aaab5;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #fff;
 }
 
 .scenario-button {
   min-height: 30px;
-  padding: 4px 7px;
-  border: 1px solid #9aaab5;
-  border-radius: 2px;
+  padding: 4px 9px;
+  border: 0;
+  border-right: 1px solid #9aaab5;
+  border-radius: 0;
   background: #fff;
   color: #17212b;
   font-size: 12px;
   cursor: pointer;
 }
+
+.scenario-button:last-child { border-right: 0; }
+.temperature-filter { box-shadow: none !important; }
+.temperature-filter .scenario-button { min-width: 72px; }
+.tabs .scenario-controls { margin-left: 10px; }
 
 .scenario-button.active {
   background: #267691;
