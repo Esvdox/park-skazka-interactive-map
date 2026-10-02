@@ -80,9 +80,16 @@ function layerConfig(layer) {
 
 const TEMPERATURE_SCENARIOS = ["0", "-5", "-10", "-15"];
 const TYPE_SCENARIOS = ["Экстремальные", "Детские", "Семейные", "Интерактивные", "Тематические"];
+const TYPE_LABELS = {
+  Экстремальные: "Экстремальный",
+  Детские: "Детский",
+  Семейные: "Семейный",
+  Интерактивные: "Интерактивный",
+  Тематические: "Тематический",
+};
 const SCENARIO_FIELDS = [
   ...TEMPERATURE_SCENARIOS.map((value) => ({ group: "temperature", key: value, label: `Температура ${value === "0" ? "выше 0" : value + " °C"}` })),
-  ...TYPE_SCENARIOS.map((value) => ({ group: "type", key: value, label: `Тип: ${value}` })),
+  ...TYPE_SCENARIOS.map((value) => ({ group: "type", key: value, label: `Тип: ${TYPE_LABELS[value]}` })),
   { group: "maintenance", key: "normal", label: "ТО: нет" },
   { group: "maintenance", key: "maintenance", label: "ТО: да" },
   { group: "repair", key: "normal", label: "Ремонт: нет" },
@@ -327,7 +334,9 @@ function renderScenarioMatrix(scenarios) {
   for (const field of SCENARIO_FIELDS) {
     const row = document.createElement("label");
     row.className = "scenario-row";
-    row.innerHTML = `<span>${field.label}</span><select data-scenario-group="${field.group}" data-scenario-key="${field.key}"><option value="open">Работает</option><option value="closed">Не работает</option></select>`;
+    const positiveLabel = field.group === "type" ? "Да" : "Работает";
+    const negativeLabel = field.group === "type" ? "Нет" : "Не работает";
+    row.innerHTML = `<span>${field.label}</span><select data-scenario-group="${field.group}" data-scenario-key="${field.key}"><option value="open">${positiveLabel}</option><option value="closed">${negativeLabel}</option></select>`;
     const select = row.querySelector("select");
     select.value = scenarios[field.group]?.[field.key] ?? scenarios[field.group] ?? "open";
     elements.scenarioMatrix.append(row);
