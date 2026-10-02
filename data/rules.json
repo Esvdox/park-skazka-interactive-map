@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "precedence": ["emergency", "maintenance", "manual_close", "weather", "schedule", "source_status", "unknown"],
+  "weatherRules": [],
+  "note": "Погодные пороги не заданы: характеристики аттракционов отсутствуют в PSD."
+}

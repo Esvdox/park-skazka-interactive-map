@@ -1,0 +1,1899 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "file": "Сказка по слоям .psd",
+    "canvas": {
+      "width": 14735,
+      "height": 6974
+    },
+    "colorMode": "4",
+    "managedGroup": "Группа 1",
+    "selectionRule": "hidden non-empty leaf layers"
+  },
+  "render": {
+    "width": 4096,
+    "height": 1939,
+    "scale": 0.2779776043434001,
+    "base": "assets/base.webp"
+  },
+  "layers": [
+    {
+      "id": "layer-001-4cd2785459",
+      "name": "Белая площадь",
+      "sourcePath": [
+        "Группа 1",
+        "Белая площадь"
+      ],
+      "sourceIndex": 1,
+      "asset": "assets/layers/layer-001-4cd2785459.webp",
+      "bbox": {
+        "left": 1430,
+        "top": 809,
+        "width": 1080,
+        "height": 952
+      },
+      "sourceBbox": [
+        5145,
+        2912,
+        9031,
+        6337
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-003-1e2aecd448",
+      "name": "Попугай",
+      "sourcePath": [
+        "Группа 1",
+        "Попугай"
+      ],
+      "sourceIndex": 3,
+      "asset": "assets/layers/layer-003-1e2aecd448.webp",
+      "bbox": {
+        "left": 3074,
+        "top": 1191,
+        "width": 151,
+        "height": 177
+      },
+      "sourceBbox": [
+        11058,
+        4283,
+        11600,
+        4920
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-004-245d5f8467",
+      "name": "Страус",
+      "sourcePath": [
+        "Группа 1",
+        "Страус"
+      ],
+      "sourceIndex": 4,
+      "asset": "assets/layers/layer-004-245d5f8467.webp",
+      "bbox": {
+        "left": 3105,
+        "top": 963,
+        "width": 115,
+        "height": 216
+      },
+      "sourceBbox": [
+        11169,
+        3463,
+        11582,
+        4240
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-005-280fcf9f47",
+      "name": "Указатель парк птиц",
+      "sourcePath": [
+        "Группа 1",
+        "Указатель парк птиц"
+      ],
+      "sourceIndex": 5,
+      "asset": "assets/layers/layer-005-280fcf9f47.webp",
+      "bbox": {
+        "left": 2952,
+        "top": 1129,
+        "width": 130,
+        "height": 106
+      },
+      "sourceBbox": [
+        10618,
+        4060,
+        11085,
+        4440
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-006-f325d963d9",
+      "name": "авиариУМ",
+      "sourcePath": [
+        "Группа 1",
+        "авиариУМ"
+      ],
+      "sourceIndex": 6,
+      "asset": "assets/layers/layer-006-f325d963d9.webp",
+      "bbox": {
+        "left": 2995,
+        "top": 1199,
+        "width": 48,
+        "height": 11
+      },
+      "sourceBbox": [
+        10776,
+        4314,
+        10947,
+        4354
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-008-0d27c85b07",
+      "name": "ПАРК птиц",
+      "sourcePath": [
+        "Группа 1",
+        "ПАРК птиц"
+      ],
+      "sourceIndex": 8,
+      "asset": "assets/layers/layer-008-0d27c85b07.webp",
+      "bbox": {
+        "left": 2986,
+        "top": 1175,
+        "width": 68,
+        "height": 17
+      },
+      "sourceBbox": [
+        10742,
+        4227,
+        10987,
+        4288
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-010-79c9621408",
+      "name": "Дорога пешая",
+      "sourcePath": [
+        "Группа 1",
+        "Дорога пешая"
+      ],
+      "sourceIndex": 10,
+      "asset": "assets/layers/layer-010-79c9621408.webp",
+      "bbox": {
+        "left": -36,
+        "top": -6,
+        "width": 2713,
+        "height": 1613
+      },
+      "sourceBbox": [
+        -128,
+        -20,
+        9631,
+        5782
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-012-cfe8f63839",
+      "name": "Город машин",
+      "sourcePath": [
+        "Группа 1",
+        "Город машин"
+      ],
+      "sourceIndex": 12,
+      "asset": "assets/layers/layer-012-cfe8f63839.webp",
+      "bbox": {
+        "left": 2343,
+        "top": 1191,
+        "width": 118,
+        "height": 73
+      },
+      "sourceBbox": [
+        8427,
+        4284,
+        8852,
+        4548
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-014-33d3352e54",
+      "name": "Кофе Джой",
+      "sourcePath": [
+        "Группа 1",
+        "Кофе Джой"
+      ],
+      "sourceIndex": 14,
+      "asset": "assets/layers/layer-014-33d3352e54.webp",
+      "bbox": {
+        "left": 2151,
+        "top": 758,
+        "width": 167,
+        "height": 115
+      },
+      "sourceBbox": [
+        7738,
+        2728,
+        8338,
+        3143
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-022-bd04ff876a",
+      "name": "Парковка",
+      "sourcePath": [
+        "Группа 1",
+        "Парковка"
+      ],
+      "sourceIndex": 22,
+      "asset": "assets/layers/layer-022-bd04ff876a.webp",
+      "bbox": {
+        "left": 513,
+        "top": 1774,
+        "width": 63,
+        "height": 67
+      },
+      "sourceBbox": [
+        1845,
+        6381,
+        2070,
+        6622
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-025-71304a2075",
+      "name": "Паровозик",
+      "sourcePath": [
+        "Группа 1",
+        "Паровозик"
+      ],
+      "sourceIndex": 25,
+      "asset": "assets/layers/layer-025-71304a2075.webp",
+      "bbox": {
+        "left": 2153,
+        "top": 1162,
+        "width": 208,
+        "height": 76
+      },
+      "sourceBbox": [
+        7745,
+        4181,
+        8495,
+        4453
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-026-9163ec31eb",
+      "name": "Дорога",
+      "sourcePath": [
+        "Группа 1",
+        "Дорога"
+      ],
+      "sourceIndex": 26,
+      "asset": "assets/layers/layer-026-9163ec31eb.webp",
+      "bbox": {
+        "left": -4,
+        "top": -3,
+        "width": 2539,
+        "height": 883
+      },
+      "sourceBbox": [
+        -13,
+        -10,
+        9121,
+        3167
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-027-58329f4230",
+      "name": "Хаски Лэнд",
+      "sourcePath": [
+        "Группа 1",
+        "Хаски Лэнд"
+      ],
+      "sourceIndex": 27,
+      "asset": "assets/layers/layer-027-58329f4230.webp",
+      "bbox": {
+        "left": 2687,
+        "top": 949,
+        "width": 359,
+        "height": 220
+      },
+      "sourceBbox": [
+        9665,
+        3415,
+        10956,
+        4207
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-029-5a0f82f192",
+      "name": "Кафе",
+      "sourcePath": [
+        "Группа 1",
+        "Кафе"
+      ],
+      "sourceIndex": 29,
+      "asset": "assets/layers/layer-029-5a0f82f192.webp",
+      "bbox": {
+        "left": 919,
+        "top": 825,
+        "width": 108,
+        "height": 93
+      },
+      "sourceBbox": [
+        3307,
+        2969,
+        3697,
+        3302
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-033-29155f642d",
+      "name": "Слой 100",
+      "sourcePath": [
+        "Группа 1",
+        "Слой 100"
+      ],
+      "sourceIndex": 33,
+      "asset": "assets/layers/layer-033-29155f642d.webp",
+      "bbox": {
+        "left": 2960,
+        "top": 854,
+        "width": 105,
+        "height": 69
+      },
+      "sourceBbox": [
+        10647,
+        3071,
+        11024,
+        3320
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-034-043aeb9b9d",
+      "name": "Альпака парк",
+      "sourcePath": [
+        "Группа 1",
+        "Альпака парк"
+      ],
+      "sourceIndex": 34,
+      "asset": "assets/layers/layer-034-043aeb9b9d.webp",
+      "bbox": {
+        "left": 2637,
+        "top": 757,
+        "width": 460,
+        "height": 194
+      },
+      "sourceBbox": [
+        9485,
+        2722,
+        11139,
+        3421
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-035-f3e2d6985c",
+      "name": "Сладкоежка",
+      "sourcePath": [
+        "Группа 1",
+        "Сладкоежка"
+      ],
+      "sourceIndex": 35,
+      "asset": "assets/layers/layer-035-f3e2d6985c.webp",
+      "bbox": {
+        "left": 2376,
+        "top": 1108,
+        "width": 94,
+        "height": 67
+      },
+      "sourceBbox": [
+        8547,
+        3986,
+        8884,
+        4228
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-036-71c999f7d1",
+      "name": "Бумеранг",
+      "sourcePath": [
+        "Группа 1",
+        "Бумеранг"
+      ],
+      "sourceIndex": 36,
+      "asset": "assets/layers/layer-036-71c999f7d1.webp",
+      "bbox": {
+        "left": -52,
+        "top": 1039,
+        "width": 900,
+        "height": 816
+      },
+      "sourceBbox": [
+        -187,
+        3738,
+        3050,
+        6672
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-037-9a9b4d1559",
+      "name": "Бабл Стар",
+      "sourcePath": [
+        "Группа 1",
+        "Бабл Стар"
+      ],
+      "sourceIndex": 37,
+      "asset": "assets/layers/layer-037-9a9b4d1559.webp",
+      "bbox": {
+        "left": 1306,
+        "top": 568,
+        "width": 129,
+        "height": 81
+      },
+      "sourceBbox": [
+        4699,
+        2045,
+        5163,
+        2336
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-038-43aaec4ff0",
+      "name": "Юла",
+      "sourcePath": [
+        "Группа 1",
+        "Юла"
+      ],
+      "sourceIndex": 38,
+      "asset": "assets/layers/layer-038-43aaec4ff0.webp",
+      "bbox": {
+        "left": 1810,
+        "top": 560,
+        "width": 143,
+        "height": 185
+      },
+      "sourceBbox": [
+        6512,
+        2016,
+        7026,
+        2681
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-039-f7f0a7daaf",
+      "name": "Сказочная карусель",
+      "sourcePath": [
+        "Группа 1",
+        "Сказочная карусель"
+      ],
+      "sourceIndex": 39,
+      "asset": "assets/layers/layer-039-f7f0a7daaf.webp",
+      "bbox": {
+        "left": 1727,
+        "top": 570,
+        "width": 325,
+        "height": 285
+      },
+      "sourceBbox": [
+        6214,
+        2051,
+        7382,
+        3078
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-040-cef13217ad",
+      "name": "Слой 88",
+      "sourcePath": [
+        "Группа 1",
+        "Слой 88"
+      ],
+      "sourceIndex": 40,
+      "asset": "assets/layers/layer-040-cef13217ad.webp",
+      "bbox": {
+        "left": 1348,
+        "top": 700,
+        "width": 110,
+        "height": 33
+      },
+      "sourceBbox": [
+        4851,
+        2519,
+        5248,
+        2636
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-041-90f4b5faf9",
+      "name": "Тир 4",
+      "sourcePath": [
+        "Группа 1",
+        "Тир 4"
+      ],
+      "sourceIndex": 41,
+      "asset": "assets/layers/layer-041-90f4b5faf9.webp",
+      "bbox": {
+        "left": 1181,
+        "top": 931,
+        "width": 59,
+        "height": 52
+      },
+      "sourceBbox": [
+        4249,
+        3348,
+        4461,
+        3535
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-042-a37aa91a9c",
+      "name": "Две руки",
+      "sourcePath": [
+        "Группа 1",
+        "Две руки"
+      ],
+      "sourceIndex": 42,
+      "asset": "assets/layers/layer-042-a37aa91a9c.webp",
+      "bbox": {
+        "left": 2247,
+        "top": 827,
+        "width": 156,
+        "height": 145
+      },
+      "sourceBbox": [
+        8083,
+        2975,
+        8644,
+        3498
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-043-91658f2c2c",
+      "name": "Паук",
+      "sourcePath": [
+        "Группа 1",
+        "Паук"
+      ],
+      "sourceIndex": 43,
+      "asset": "assets/layers/layer-043-91658f2c2c.webp",
+      "bbox": {
+        "left": 1350,
+        "top": 1130,
+        "width": 210,
+        "height": 125
+      },
+      "sourceBbox": [
+        4856,
+        4064,
+        5611,
+        4514
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-044-3753513cef",
+      "name": "Сердце Москвы",
+      "sourcePath": [
+        "Группа 1",
+        "Сердце Москвы"
+      ],
+      "sourceIndex": 44,
+      "asset": "assets/layers/layer-044-3753513cef.webp",
+      "bbox": {
+        "left": 685,
+        "top": 1246,
+        "width": 656,
+        "height": 595
+      },
+      "sourceBbox": [
+        2464,
+        4483,
+        4825,
+        6622
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-045-b41544b60d",
+      "name": "СМЕРЧ",
+      "sourcePath": [
+        "Группа 1",
+        "СМЕРЧ"
+      ],
+      "sourceIndex": 45,
+      "asset": "assets/layers/layer-045-b41544b60d.webp",
+      "bbox": {
+        "left": 1389,
+        "top": 1350,
+        "width": 226,
+        "height": 371
+      },
+      "sourceBbox": [
+        4998,
+        4857,
+        5811,
+        6190
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-046-71e65591c7",
+      "name": "Формула",
+      "sourcePath": [
+        "Группа 1",
+        "Формула"
+      ],
+      "sourceIndex": 46,
+      "asset": "assets/layers/layer-046-71e65591c7.webp",
+      "bbox": {
+        "left": 1486,
+        "top": 1138,
+        "width": 373,
+        "height": 282
+      },
+      "sourceBbox": [
+        5346,
+        4094,
+        6688,
+        5109
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-047-3542b79872",
+      "name": "Вихрь",
+      "sourcePath": [
+        "Группа 1",
+        "Вихрь"
+      ],
+      "sourceIndex": 47,
+      "asset": "assets/layers/layer-047-3542b79872.webp",
+      "bbox": {
+        "left": 1651,
+        "top": 1320,
+        "width": 310,
+        "height": 372
+      },
+      "sourceBbox": [
+        5940,
+        4747,
+        7056,
+        6087
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-049-207b2bc0a7",
+      "name": "Шейкер",
+      "sourcePath": [
+        "Группа 1",
+        "Шейкер"
+      ],
+      "sourceIndex": 49,
+      "asset": "assets/layers/layer-049-207b2bc0a7.webp",
+      "bbox": {
+        "left": 927,
+        "top": 671,
+        "width": 158,
+        "height": 91
+      },
+      "sourceBbox": [
+        3334,
+        2415,
+        3902,
+        2741
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-050-cecc5bcf50",
+      "name": "Автодром",
+      "sourcePath": [
+        "Группа 1",
+        "Автодром"
+      ],
+      "sourceIndex": 50,
+      "asset": "assets/layers/layer-050-cecc5bcf50.webp",
+      "bbox": {
+        "left": 1001,
+        "top": 570,
+        "width": 253,
+        "height": 145
+      },
+      "sourceBbox": [
+        3601,
+        2049,
+        4510,
+        2571
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-051-bb5c4ed652",
+      "name": "Тир 3",
+      "sourcePath": [
+        "Группа 1",
+        "Тир 3"
+      ],
+      "sourceIndex": 51,
+      "asset": "assets/layers/layer-051-bb5c4ed652.webp",
+      "bbox": {
+        "left": 954,
+        "top": 765,
+        "width": 74,
+        "height": 56
+      },
+      "sourceBbox": [
+        3433,
+        2751,
+        3699,
+        2952
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-052-412b3c88d6",
+      "name": "Галактика",
+      "sourcePath": [
+        "Группа 1",
+        "Галактика"
+      ],
+      "sourceIndex": 52,
+      "asset": "assets/layers/layer-052-412b3c88d6.webp",
+      "bbox": {
+        "left": 574,
+        "top": 962,
+        "width": 620,
+        "height": 282
+      },
+      "sourceBbox": [
+        2065,
+        3461,
+        4296,
+        4477
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-053-71c999f7d1",
+      "name": "Бумеранг",
+      "sourcePath": [
+        "Группа 1",
+        "Бумеранг"
+      ],
+      "sourceIndex": 53,
+      "asset": "assets/layers/layer-053-71c999f7d1.webp",
+      "bbox": {
+        "left": 212,
+        "top": 985,
+        "width": 786,
+        "height": 760
+      },
+      "sourceBbox": [
+        761,
+        3544,
+        3587,
+        6277
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-054-e97b7af84d",
+      "name": "Высший пилотаж",
+      "sourcePath": [
+        "Группа 1",
+        "Высший пилотаж"
+      ],
+      "sourceIndex": 54,
+      "asset": "assets/layers/layer-054-e97b7af84d.webp",
+      "bbox": {
+        "left": 1204,
+        "top": 927,
+        "width": 164,
+        "height": 162
+      },
+      "sourceBbox": [
+        4333,
+        3335,
+        4924,
+        3918
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-055-e9fc168aab",
+      "name": "Каноэ",
+      "sourcePath": [
+        "Группа 1",
+        "Каноэ"
+      ],
+      "sourceIndex": 55,
+      "asset": "assets/layers/layer-055-e9fc168aab.webp",
+      "bbox": {
+        "left": 2036,
+        "top": 1228,
+        "width": 158,
+        "height": 92
+      },
+      "sourceBbox": [
+        7324,
+        4416,
+        7894,
+        4746
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-056-3a182937c3",
+      "name": "Дорожный патруль",
+      "sourcePath": [
+        "Группа 1",
+        "Дорожный патруль"
+      ],
+      "sourceIndex": 56,
+      "asset": "assets/layers/layer-056-3a182937c3.webp",
+      "bbox": {
+        "left": 2001,
+        "top": 1126,
+        "width": 230,
+        "height": 95
+      },
+      "sourceBbox": [
+        7197,
+        4050,
+        8026,
+        4393
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-057-9865f095c7",
+      "name": "Летучий плавник",
+      "sourcePath": [
+        "Группа 1",
+        "Летучий плавник"
+      ],
+      "sourceIndex": 57,
+      "asset": "assets/layers/layer-057-9865f095c7.webp",
+      "bbox": {
+        "left": 2175,
+        "top": 871,
+        "width": 125,
+        "height": 135
+      },
+      "sourceBbox": [
+        7826,
+        3132,
+        8275,
+        3616
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-058-46571f91d6",
+      "name": "Бамперные лодки Нептун",
+      "sourcePath": [
+        "Группа 1",
+        "Бамперные лодки Нептун"
+      ],
+      "sourceIndex": 58,
+      "asset": "assets/layers/layer-058-46571f91d6.webp",
+      "bbox": {
+        "left": 2148,
+        "top": 1034,
+        "width": 129,
+        "height": 71
+      },
+      "sourceBbox": [
+        7729,
+        3719,
+        8194,
+        3975
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-059-256e9037b8",
+      "name": "Космодром",
+      "sourcePath": [
+        "Группа 1",
+        "Космодром"
+      ],
+      "sourceIndex": 59,
+      "asset": "assets/layers/layer-059-256e9037b8.webp",
+      "bbox": {
+        "left": 2480,
+        "top": 1074,
+        "width": 220,
+        "height": 175
+      },
+      "sourceBbox": [
+        8921,
+        3862,
+        9713,
+        4493
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-060-811355d529",
+      "name": "Башня падения",
+      "sourcePath": [
+        "Группа 1",
+        "Башня падения"
+      ],
+      "sourceIndex": 60,
+      "asset": "assets/layers/layer-060-811355d529.webp",
+      "bbox": {
+        "left": 2097,
+        "top": 811,
+        "width": 54,
+        "height": 145
+      },
+      "sourceBbox": [
+        7542,
+        2916,
+        7738,
+        3436
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-061-729e8644dd",
+      "name": "Петля времени",
+      "sourcePath": [
+        "Группа 1",
+        "Петля времени"
+      ],
+      "sourceIndex": 61,
+      "asset": "assets/layers/layer-061-729e8644dd.webp",
+      "bbox": {
+        "left": 1950,
+        "top": 712,
+        "width": 156,
+        "height": 165
+      },
+      "sourceBbox": [
+        7016,
+        2562,
+        7577,
+        3154
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-062-3757ce6f62",
+      "name": "Путь Дракона",
+      "sourcePath": [
+        "Группа 1",
+        "Путь Дракона"
+      ],
+      "sourceIndex": 62,
+      "asset": "assets/layers/layer-062-3757ce6f62.webp",
+      "bbox": {
+        "left": 2560,
+        "top": 1174,
+        "width": 656,
+        "height": 438
+      },
+      "sourceBbox": [
+        9211,
+        4225,
+        11570,
+        5799
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-063-ea83cd0046",
+      "name": "Нитро",
+      "sourcePath": [
+        "Группа 1",
+        "Нитро"
+      ],
+      "sourceIndex": 63,
+      "asset": "assets/layers/layer-063-ea83cd0046.webp",
+      "bbox": {
+        "left": 2352,
+        "top": 831,
+        "width": 417,
+        "height": 243
+      },
+      "sourceBbox": [
+        8462,
+        2988,
+        9961,
+        3862
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-064-f1080c2ea7",
+      "name": "Веревочный парк",
+      "sourcePath": [
+        "Группа 1",
+        "Веревочный парк"
+      ],
+      "sourceIndex": 64,
+      "asset": "assets/layers/layer-064-f1080c2ea7.webp",
+      "bbox": {
+        "left": 2301,
+        "top": 686,
+        "width": 140,
+        "height": 133
+      },
+      "sourceBbox": [
+        8278,
+        2467,
+        8781,
+        2946
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-066-3a559594ff",
+      "name": "Автобус",
+      "sourcePath": [
+        "Группа 1",
+        "Автобус"
+      ],
+      "sourceIndex": 66,
+      "asset": "assets/layers/layer-066-3a559594ff.webp",
+      "bbox": {
+        "left": 1805,
+        "top": 219,
+        "width": 160,
+        "height": 100
+      },
+      "sourceBbox": [
+        6495,
+        789,
+        7070,
+        1148
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-067-f6d6c40f1a",
+      "name": "Тир 5 копия",
+      "sourcePath": [
+        "Группа 1",
+        "Тир 5 копия"
+      ],
+      "sourceIndex": 67,
+      "asset": "assets/layers/layer-067-f6d6c40f1a.webp",
+      "bbox": {
+        "left": 1645,
+        "top": 1747,
+        "width": 119,
+        "height": 84
+      },
+      "sourceBbox": [
+        5916,
+        6284,
+        6345,
+        6587
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-069-41c8d99f60",
+      "name": "Карусель Рекс",
+      "sourcePath": [
+        "Группа 1",
+        "Карусель Рекс"
+      ],
+      "sourceIndex": 69,
+      "asset": "assets/layers/layer-069-41c8d99f60.webp",
+      "bbox": {
+        "left": 1375,
+        "top": 906,
+        "width": 87,
+        "height": 70
+      },
+      "sourceBbox": [
+        4946,
+        3261,
+        5260,
+        3512
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-070-de9441b417",
+      "name": "Выноска Касса",
+      "sourcePath": [
+        "Группа 1",
+        "Выноска Касса"
+      ],
+      "sourceIndex": 70,
+      "asset": "assets/layers/layer-070-de9441b417.webp",
+      "bbox": {
+        "left": 290,
+        "top": 1065,
+        "width": 86,
+        "height": 128
+      },
+      "sourceBbox": [
+        1044,
+        3831,
+        1355,
+        4292
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-071-4273409a5c",
+      "name": "Лабиринт страха",
+      "sourcePath": [
+        "Группа 1",
+        "Лабиринт страха"
+      ],
+      "sourceIndex": 71,
+      "asset": "assets/layers/layer-071-4273409a5c.webp",
+      "bbox": {
+        "left": 389,
+        "top": 1047,
+        "width": 134,
+        "height": 123
+      },
+      "sourceBbox": [
+        1400,
+        3768,
+        1883,
+        4210
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-072-0ef2bec7f1",
+      "name": "Самолет",
+      "sourcePath": [
+        "Группа 1",
+        "Самолет"
+      ],
+      "sourceIndex": 72,
+      "asset": "assets/layers/layer-072-0ef2bec7f1.webp",
+      "bbox": {
+        "left": 2197,
+        "top": 1236,
+        "width": 111,
+        "height": 60
+      },
+      "sourceBbox": [
+        7903,
+        4445,
+        8304,
+        4660
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-073-08a135f3bf",
+      "name": "Дискавери ",
+      "sourcePath": [
+        "Группа 1",
+        "Дискавери "
+      ],
+      "sourceIndex": 73,
+      "asset": "assets/layers/layer-073-08a135f3bf.webp",
+      "bbox": {
+        "left": 1671,
+        "top": 911,
+        "width": 136,
+        "height": 195
+      },
+      "sourceBbox": [
+        6012,
+        3276,
+        6500,
+        3977
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-074-fa7c5f019a",
+      "name": "Бум Вафля",
+      "sourcePath": [
+        "Группа 1",
+        "Бум Вафля"
+      ],
+      "sourceIndex": 74,
+      "asset": "assets/layers/layer-074-fa7c5f019a.webp",
+      "bbox": {
+        "left": 1694,
+        "top": 801,
+        "width": 46,
+        "height": 48
+      },
+      "sourceBbox": [
+        6093,
+        2881,
+        6260,
+        3053
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-075-21a6c0e6c2",
+      "name": "Ветерок",
+      "sourcePath": [
+        "Группа 1",
+        "Ветерок"
+      ],
+      "sourceIndex": 75,
+      "asset": "assets/layers/layer-075-21a6c0e6c2.webp",
+      "bbox": {
+        "left": 2056,
+        "top": 948,
+        "width": 86,
+        "height": 87
+      },
+      "sourceBbox": [
+        7397,
+        3411,
+        7705,
+        3724
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-076-47ba47dfde",
+      "name": "Чаепитие",
+      "sourcePath": [
+        "Группа 1",
+        "Чаепитие"
+      ],
+      "sourceIndex": 76,
+      "asset": "assets/layers/layer-076-47ba47dfde.webp",
+      "bbox": {
+        "left": 1929,
+        "top": 919,
+        "width": 110,
+        "height": 88
+      },
+      "sourceBbox": [
+        6940,
+        3307,
+        7334,
+        3625
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-077-8a818757c9",
+      "name": "Гусеница",
+      "sourcePath": [
+        "Группа 1",
+        "Гусеница"
+      ],
+      "sourceIndex": 77,
+      "asset": "assets/layers/layer-077-8a818757c9.webp",
+      "bbox": {
+        "left": 1867,
+        "top": 992,
+        "width": 190,
+        "height": 105
+      },
+      "sourceBbox": [
+        6716,
+        3568,
+        7399,
+        3946
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-078-7e8e262375",
+      "name": "Микс",
+      "sourcePath": [
+        "Группа 1",
+        "Микс"
+      ],
+      "sourceIndex": 78,
+      "asset": "assets/layers/layer-078-7e8e262375.webp",
+      "bbox": {
+        "left": 1505,
+        "top": 1003,
+        "width": 125,
+        "height": 100
+      },
+      "sourceBbox": [
+        5413,
+        3608,
+        5864,
+        3969
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-079-9e51799dd7",
+      "name": "Пружинка",
+      "sourcePath": [
+        "Группа 1",
+        "Пружинка"
+      ],
+      "sourceIndex": 79,
+      "asset": "assets/layers/layer-079-9e51799dd7.webp",
+      "bbox": {
+        "left": 1306,
+        "top": 822,
+        "width": 62,
+        "height": 119
+      },
+      "sourceBbox": [
+        4698,
+        2958,
+        4920,
+        3387
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-080-4273bbda5b",
+      "name": "360",
+      "sourcePath": [
+        "Группа 1",
+        "360"
+      ],
+      "sourceIndex": 80,
+      "asset": "assets/layers/layer-080-4273bbda5b.webp",
+      "bbox": {
+        "left": 1017,
+        "top": 772,
+        "width": 183,
+        "height": 287
+      },
+      "sourceBbox": [
+        3659,
+        2779,
+        4317,
+        3811
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-081-86aa3d4ed1",
+      "name": "Дино Сафари",
+      "sourcePath": [
+        "Группа 1",
+        "Дино Сафари"
+      ],
+      "sourceIndex": 81,
+      "asset": "assets/layers/layer-081-86aa3d4ed1.webp",
+      "bbox": {
+        "left": 2366,
+        "top": 122,
+        "width": 553,
+        "height": 418
+      },
+      "sourceBbox": [
+        8510,
+        438,
+        10498,
+        1940
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-082-85c3b43166",
+      "name": "Вертолеты",
+      "sourcePath": [
+        "Группа 1",
+        "Вертолеты"
+      ],
+      "sourceIndex": 82,
+      "asset": "assets/layers/layer-082-85c3b43166.webp",
+      "bbox": {
+        "left": 1891,
+        "top": 1106,
+        "width": 96,
+        "height": 63
+      },
+      "sourceBbox": [
+        6803,
+        3980,
+        7147,
+        4207
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-083-796b9e5291",
+      "name": "Колобок",
+      "sourcePath": [
+        "Группа 1",
+        "Колобок"
+      ],
+      "sourceIndex": 83,
+      "asset": "assets/layers/layer-083-796b9e5291.webp",
+      "bbox": {
+        "left": 1413,
+        "top": 736,
+        "width": 118,
+        "height": 83
+      },
+      "sourceBbox": [
+        5082,
+        2649,
+        5508,
+        2946
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-084-4708fd66d2",
+      "name": "Солнышко",
+      "sourcePath": [
+        "Группа 1",
+        "Солнышко"
+      ],
+      "sourceIndex": 84,
+      "asset": "assets/layers/layer-084-4708fd66d2.webp",
+      "bbox": {
+        "left": 1851,
+        "top": 859,
+        "width": 69,
+        "height": 145
+      },
+      "sourceBbox": [
+        6659,
+        3089,
+        6907,
+        3609
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-085-47310e7ac3",
+      "name": "Веселые качели",
+      "sourcePath": [
+        "Группа 1",
+        "Веселые качели"
+      ],
+      "sourceIndex": 85,
+      "asset": "assets/layers/layer-085-47310e7ac3.webp",
+      "bbox": {
+        "left": 2070,
+        "top": 272,
+        "width": 102,
+        "height": 111
+      },
+      "sourceBbox": [
+        7445,
+        979,
+        7813,
+        1378
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-086-113e176534",
+      "name": "Прыгающие машинки",
+      "sourcePath": [
+        "Группа 1",
+        "Прыгающие машинки"
+      ],
+      "sourceIndex": 86,
+      "asset": "assets/layers/layer-086-113e176534.webp",
+      "bbox": {
+        "left": 2034,
+        "top": 388,
+        "width": 96,
+        "height": 70
+      },
+      "sourceBbox": [
+        7316,
+        1394,
+        7662,
+        1645
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-087-3dd2769e9a",
+      "name": "Кракен",
+      "sourcePath": [
+        "Группа 1",
+        "Кракен"
+      ],
+      "sourceIndex": 87,
+      "asset": "assets/layers/layer-087-3dd2769e9a.webp",
+      "bbox": {
+        "left": 1456,
+        "top": 839,
+        "width": 155,
+        "height": 90
+      },
+      "sourceBbox": [
+        5239,
+        3018,
+        5796,
+        3340
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-088-435e3f0d20",
+      "name": "Летающие велосипеды",
+      "sourcePath": [
+        "Группа 1",
+        "Летающие велосипеды"
+      ],
+      "sourceIndex": 88,
+      "asset": "assets/layers/layer-088-435e3f0d20.webp",
+      "bbox": {
+        "left": 1496,
+        "top": 927,
+        "width": 109,
+        "height": 85
+      },
+      "sourceBbox": [
+        5380,
+        3336,
+        5771,
+        3640
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-089-cf58448385",
+      "name": "Слой 87",
+      "sourcePath": [
+        "Группа 1",
+        "Слой 87"
+      ],
+      "sourceIndex": 89,
+      "asset": "assets/layers/layer-089-cf58448385.webp",
+      "bbox": {
+        "left": 1501,
+        "top": 565,
+        "width": 143,
+        "height": 54
+      },
+      "sourceBbox": [
+        5399,
+        2033,
+        5915,
+        2229
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-093-7139ee7404",
+      "name": "Тир 1",
+      "sourcePath": [
+        "Группа 1",
+        "Тир 1"
+      ],
+      "sourceIndex": 93,
+      "asset": "assets/layers/layer-093-7139ee7404.webp",
+      "bbox": {
+        "left": 1704,
+        "top": 1115,
+        "width": 100,
+        "height": 71
+      },
+      "sourceBbox": [
+        6130,
+        4010,
+        6490,
+        4265
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-094-bb5c4ed652",
+      "name": "Тир 3",
+      "sourcePath": [
+        "Группа 1",
+        "Тир 3"
+      ],
+      "sourceIndex": 94,
+      "asset": "assets/layers/layer-094-bb5c4ed652.webp",
+      "bbox": {
+        "left": 629,
+        "top": 1052,
+        "width": 86,
+        "height": 55
+      },
+      "sourceBbox": [
+        2261,
+        3783,
+        2572,
+        3980
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-095-0ad1ac27cf",
+      "name": "Слой 26",
+      "sourcePath": [
+        "Группа 1",
+        "Слой 26"
+      ],
+      "sourceIndex": 95,
+      "asset": "assets/layers/layer-095-0ad1ac27cf.webp",
+      "bbox": {
+        "left": 1178,
+        "top": 648,
+        "width": 504,
+        "height": 294
+      },
+      "sourceBbox": [
+        4236,
+        2330,
+        6050,
+        3388
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    }
+  ],
+  "export": {
+    "exported": 71,
+    "skipped": 24,
+    "skippedItems": [
+      {
+        "path": [
+          "Группа 1",
+          "Беседки за лофтом"
+        ],
+        "reason": "visible-in-base"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Енотия"
+        ],
+        "reason": "visible-in-base"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Базилик"
+        ],
+        "reason": "visible-in-base"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Слой 102"
+        ],
+        "reason": "visible-in-base"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Входная арка со стороны Крлатско"
+        ],
+        "reason": "visible-in-base"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Отдел продаж"
+        ],
+        "reason": "visible-in-base"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Ленточный лабиринт"
+        ],
+        "reason": "visible-in-base"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Дино"
+        ],
+        "reason": "empty-bbox"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Слой 103"
+        ],
+        "reason": "visible-in-base"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Парковка мост"
+        ],
+        "reason": "visible-in-base"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Парковка под мостом"
+        ],
+        "reason": "visible-in-base"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Парковка у Ледового"
+        ],
+        "reason": "visible-in-base"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Зеркальный лабиринт"
+        ],
+        "reason": "visible-in-base"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Инфоцентр"
+        ],
+        "reason": "visible-in-base"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Входная арка от моста"
+        ],
+        "reason": "visible-in-base"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Дом Бабы Яги "
+        ],
+        "reason": "visible-in-base"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Дино парк"
+        ],
+        "reason": "empty-bbox"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Мадагаскар"
+        ],
+        "reason": "visible-in-base"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Шейкер и автодром"
+        ],
+        "reason": "empty-bbox"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Молния и Небесная карусель"
+        ],
+        "reason": "empty-bbox"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Эко Лофт"
+        ],
+        "reason": "visible-in-base"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Колесо обозрения и сцена"
+        ],
+        "reason": "empty-bbox"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Сцена"
+        ],
+        "reason": "visible-in-base"
+      },
+      {
+        "path": [
+          "Группа 1",
+          "Кафе Симфония"
+        ],
+        "reason": "visible-in-base"
+      }
+    ]
+  }
+}

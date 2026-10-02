@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Парк Сказка — оперативная карта</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div><p class="eyebrow">Парк Сказка</p><h1>Оперативная карта</h1></div>
+      <div class="summary" aria-live="polite"><span><strong id="open-count">0</strong> работают</span><span><strong id="inactive-count">0</strong> не показаны</span><span id="updated-at">Данные не загружены</span></div>
+    </header>
+    <nav class="tabs" aria-label="Разделы карты">
+      <button class="tab active" data-tab="map">Карта</button><button class="tab" data-tab="search">Поиск</button><button class="tab" data-tab="settings">Параметры</button>
+    </nav>
+
+    <main class="workspace">
+      <section class="tab-panel active" data-panel="map" aria-label="Карта парка">
+        <div class="map-panel">
+          <div class="map-toolbar">
+            <div class="temperature-filter" role="group" aria-label="Температурный режим"><button class="temperature-button active" data-temperature="null">Выше 0</button><button class="temperature-button" data-temperature="-5">−5</button><button class="temperature-button" data-temperature="-10">−10</button><button class="temperature-button" data-temperature="-15">−15</button></div>
+            <div class="zoom-controls"><button id="zoom-out" class="icon-button" title="Уменьшить" aria-label="Уменьшить">−</button><button id="zoom-reset" class="zoom-value" title="Показать карту целиком">100%</button><button id="zoom-in" class="icon-button" title="Увеличить" aria-label="Увеличить">+</button></div>
+          </div>
+          <div id="map-viewport" class="map-viewport"><div id="map-stage" class="map-stage"><img id="base-map" class="base-map" alt="Карта Парка Сказка" /><div id="overlay-root" class="overlay-root" aria-hidden="true"></div></div></div>
+          <div class="legend"><span><i class="dot open"></i>работает</span><span><i class="dot maintenance"></i>ТО</span><span><i class="dot closed"></i>закрыт</span><span><i class="dot weather"></i>погода</span><span><i class="dot unknown"></i>неизвестно</span></div>
+        </div>
+      </section>
+
+      <section class="tab-panel" data-panel="search" aria-label="Поиск слоёв">
+        <div class="section-header"><div><p class="eyebrow dark">Реестр слоёв</p><h2>Поиск и оперативные статусы</h2></div><p class="section-note">Ручные изменения действуют только в этом браузере.</p></div>
+        <div class="search-controls"><label class="search"><span>Поиск слоя</span><input id="search" type="search" placeholder="Название из PSD" /></label><div class="filter" role="group" aria-label="Фильтр статусов"><button class="filter-button active" data-filter="all">Все</button><button class="filter-button" data-filter="open">Работают</button><button class="filter-button" data-filter="inactive">Не показаны</button></div></div>
+        <div id="layer-list" class="layer-list"></div>
+      </section>
+
+      <section class="tab-panel" data-panel="settings" aria-label="Настройка параметров">
+        <div class="section-header"><div><p class="eyebrow dark">Конфигурация</p><h2>Параметры слоя</h2></div><p class="section-note">Настройки сохраняются локально. Источник графики — PSD.</p></div>
+        <div class="settings-layout">
+          <div class="settings-layer-list"><label class="search"><span>Выбрать слой</span><select id="settings-layer-select"></select></label><p class="helper">Здесь доступны все экспортированные скрытые слои из группы «Группа 1».</p></div>
+          <form id="layer-settings" class="settings-form">
+            <div class="form-grid"><label><span>Название слоя</span><input id="setting-name" type="text" required /></label><label><span>Условия работы</span><textarea id="setting-conditions" rows="4" placeholder="Например: работает по расписанию, при отсутствии ТО и погодных ограничений"></textarea></label><label><span>Минимальная температура, °C</span><input id="setting-min-temp" type="number" step="1" placeholder="Не задано" /></label></div>
+            <div class="additional-header"><div><h3>Дополнительные параметры</h3><p class="helper">Добавляйте собственные поля для выбранного слоя.</p></div><button id="add-parameter" class="secondary-button" type="button">+ Добавить параметр</button></div>
+            <div id="additional-parameters" class="additional-parameters"></div><div class="form-actions"><button class="primary-button" type="submit">Сохранить параметры</button><span id="save-message" role="status"></span></div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <template id="layer-row-template"><article class="layer-row"><button class="visibility" title="Переключить видимость" aria-label="Переключить видимость"></button><div class="layer-copy"><strong class="layer-name"></strong><span class="layer-id"></span></div><select class="status-select" aria-label="Статус слоя"><option value="unknown">Неизвестно</option><option value="open">Работает</option><option value="maintenance">ТО</option><option value="closed">Закрыт</option><option value="weather_hold">Погода</option></select></article></template>
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
