@@ -46,6 +46,8 @@ def main() -> None:
     parser.add_argument("output", type=Path)
     parser.add_argument("--group", default="Группа 1")
     parser.add_argument("--width", type=int, default=4096)
+    parser.add_argument("--crop-right", type=int, default=None)
+    parser.add_argument("--exclude-layer-id", action="append", default=[])
     args = parser.parse_args()
 
     psd = PSDImage.open(args.psd)
@@ -58,6 +60,9 @@ def main() -> None:
     data_dir.mkdir(parents=True, exist_ok=True)
 
     base = resize(psd.topil().convert("RGB"), scale)
+    if args.crop_right is not None:
+        crop_right = min(base.width, max(1, round(args.crop_right * scale)))
+        base = base.crop((0, 0, crop_right, base.height))
     base.save(assets / "base.webp", "WEBP", quality=90, method=6)
 
     group = find_top_level_group(psd, args.group)
@@ -78,6 +83,9 @@ def main() -> None:
             continue
 
         layer_id = stable_id(path, source_index)
+        if layer_id in args.exclude_layer_id:
+            skipped.append({"path": list(path), "reason": "excluded-by-id", "id": layer_id})
+            continue
         asset_name = f"{layer_id}.webp"
         try:
             # topil() reads the layer pixels even when the PSD layer is hidden.
@@ -138,6 +146,8 @@ def main() -> None:
             "skippedItems": skipped,
         },
     }
+    if args.crop_right is not None:
+        document["render"]["crop"] = {"left": 0, "top": 0, "right": base.width, "bottom": base.height}
     (data_dir / "layers.json").write_text(
         json.dumps(document, ensure_ascii=False, indent=2), encoding="utf-8"
     )

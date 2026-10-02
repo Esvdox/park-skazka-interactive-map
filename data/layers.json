@@ -11,10 +11,16 @@
     "selectionRule": "hidden non-empty leaf layers"
   },
   "render": {
-    "width": 4096,
+    "width": 3200,
     "height": 1939,
     "scale": 0.2779776043434001,
-    "base": "assets/base.webp"
+    "base": "assets/base.webp",
+    "crop": {
+      "left": 0,
+      "top": 0,
+      "right": 3200,
+      "bottom": 1939
+    }
   },
   "layers": [
     {
@@ -421,30 +427,6 @@
         3986,
         8884,
         4228
-      ],
-      "defaultStatus": "unknown",
-      "weatherRule": null
-    },
-    {
-      "id": "layer-036-71c999f7d1",
-      "name": "Бумеранг",
-      "sourcePath": [
-        "Группа 1",
-        "Бумеранг"
-      ],
-      "sourceIndex": 36,
-      "asset": "assets/layers/layer-036-71c999f7d1.webp",
-      "bbox": {
-        "left": -52,
-        "top": 1039,
-        "width": 900,
-        "height": 816
-      },
-      "sourceBbox": [
-        -187,
-        3738,
-        3050,
-        6672
       ],
       "defaultStatus": "unknown",
       "weatherRule": null
@@ -1723,7 +1705,7 @@
     }
   ],
   "export": {
-    "exported": 71,
+    "exported": 70,
     "skipped": 24,
     "skippedItems": [
       {
