@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import sys
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from PIL import Image
 
@@ -18,7 +19,9 @@ def main() -> None:
     ids: set[str] = set()
     failures: list[str] = []
 
-    base_path = root / manifest["render"]["base"]
+    # The browser may receive a cache-busting query string; the local file name does not.
+    base_ref = manifest["render"]["base"]
+    base_path = root / urlsplit(base_ref).path
     with Image.open(base_path) as base:
         actual_base = [base.width, base.height]
     expected_base = [manifest["render"]["width"], manifest["render"]["height"]]

@@ -1,0 +1,747 @@
+{
+  "schemaVersion": 1,
+  "fields": {
+    "purpose": "Назначение по категории официального сайта",
+    "temperatureWork": "Работа аттракциона по температурным диапазонам из таблицы пользователя"
+  },
+  "temperatureScale": [
+    "до -5",
+    "до -10",
+    "до -15",
+    "ниже -15"
+  ],
+  "sources": [
+    "https://parkskazka.com/attractions/",
+    "https://parkskazka.com/places/",
+    "Пользовательская таблица температурных режимов, приложенная 2026-10-02"
+  ],
+  "properties": [
+    {
+      "number": 1,
+      "name": "Лабиринт страха",
+      "purpose": "Интерактивные",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 2,
+      "name": "Звездопад",
+      "purpose": "Экстремальные",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 3,
+      "name": "Бумеранг",
+      "purpose": null,
+      "temperatureWork": null,
+      "sourceStatus": "not-found-on-official-category-pages"
+    },
+    {
+      "number": 4,
+      "name": "Тир",
+      "purpose": null,
+      "temperatureWork": null,
+      "sourceStatus": "not-found-on-official-category-pages"
+    },
+    {
+      "number": 5,
+      "name": "Галактика",
+      "purpose": null,
+      "temperatureWork": null,
+      "sourceStatus": "not-found-on-official-category-pages"
+    },
+    {
+      "number": 6,
+      "name": "Молния",
+      "purpose": "Экстремальные",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 7,
+      "name": "Небесная карусель",
+      "purpose": "Экстремальные",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 8,
+      "name": "360",
+      "purpose": "Экстремальные",
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": false,
+        "ниже -15": false
+      },
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 9,
+      "name": "Вихрь",
+      "purpose": "Экстремальные",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 10,
+      "name": "Шейкер",
+      "purpose": null,
+      "temperatureWork": null,
+      "sourceStatus": "not-found-on-official-category-pages"
+    },
+    {
+      "number": 11,
+      "name": "Автодром",
+      "purpose": "Семейные",
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": true,
+        "ниже -15": false
+      },
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 12,
+      "name": "Кругосветное путешествие",
+      "purpose": "Семейные",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 13,
+      "name": "Пружинка",
+      "purpose": null,
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": false,
+        "ниже -15": false
+      },
+      "sourceStatus": "not-found-on-official-category-pages"
+    },
+    {
+      "number": 14,
+      "name": "Высший пилотаж",
+      "purpose": "Экстремальные",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 15,
+      "name": "Аркады",
+      "purpose": "Интерактивные",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 16,
+      "name": "Паук",
+      "purpose": "Экстремальные",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 17,
+      "name": "Тиры",
+      "purpose": "Интерактивные",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 18,
+      "name": "Сердце Москвы",
+      "purpose": null,
+      "temperatureWork": null,
+      "sourceStatus": "not-found-on-official-category-pages"
+    },
+    {
+      "number": 19,
+      "name": "Бабл Стар",
+      "purpose": null,
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": true,
+        "ниже -15": false
+      },
+      "sourceStatus": "not-found-on-official-category-pages"
+    },
+    {
+      "number": 20,
+      "name": "Карусель «Вальс»",
+      "purpose": "Семейные",
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": true,
+        "ниже -15": false
+      },
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 21,
+      "name": "Ленточный лабиринт",
+      "purpose": "Интерактивные",
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": true,
+        "ниже -15": false
+      },
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 22,
+      "name": "Колобок",
+      "purpose": null,
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": false,
+        "ниже -15": false
+      },
+      "sourceStatus": "not-found-on-official-category-pages"
+    },
+    {
+      "number": 23,
+      "name": "Дом Бабы Яги",
+      "purpose": "Интерактивные",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 24,
+      "name": "Кракен",
+      "purpose": "Экстремальные",
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": false,
+        "до -15": false,
+        "ниже -15": false
+      },
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 25,
+      "name": "Карусель «Рекс»",
+      "purpose": null,
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": true,
+        "ниже -15": false
+      },
+      "sourceStatus": "not-found-on-official-category-pages"
+    },
+    {
+      "number": 26,
+      "name": "Летающие велосипеды",
+      "purpose": null,
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": false,
+        "до -15": false,
+        "ниже -15": false
+      },
+      "sourceStatus": "not-found-on-official-category-pages"
+    },
+    {
+      "number": 27,
+      "name": "Микс",
+      "purpose": "Экстремальные",
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": false,
+        "ниже -15": false
+      },
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 28,
+      "name": "СМЕРЧ",
+      "purpose": "Экстремальные",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 29,
+      "name": "Формула",
+      "purpose": "Экстремальные",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 30,
+      "name": "Каноэ",
+      "purpose": "Семейные",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 31,
+      "name": "Колесо обозрения",
+      "purpose": "Семейные",
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": true,
+        "ниже -15": false
+      },
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 32,
+      "name": "Путь Дракона",
+      "purpose": null,
+      "temperatureWork": null,
+      "sourceStatus": "not-found-on-official-category-pages"
+    },
+    {
+      "number": 33,
+      "name": "Сладкоежка",
+      "purpose": "Детские",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 34,
+      "name": "Юла",
+      "purpose": "Семейные",
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": true,
+        "ниже -15": false
+      },
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 35,
+      "name": "Сказочная карусель",
+      "purpose": "Семейные",
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": true,
+        "ниже -15": false
+      },
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 36,
+      "name": "Дискавери",
+      "purpose": "Экстремальные",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 37,
+      "name": "Веселые качели",
+      "purpose": "Семейные",
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": false,
+        "ниже -15": false
+      },
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 38,
+      "name": "Петля времени",
+      "purpose": "Экстремальные",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 39,
+      "name": "Солнышко",
+      "purpose": null,
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": false,
+        "ниже -15": false
+      },
+      "sourceStatus": "not-found-on-official-category-pages"
+    },
+    {
+      "number": 40,
+      "name": "Чаепитие",
+      "purpose": "Семейные",
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": true,
+        "ниже -15": false
+      },
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 41,
+      "name": "Гусеница",
+      "purpose": "Детские",
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": false,
+        "ниже -15": false
+      },
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 42,
+      "name": "Вертолеты",
+      "purpose": "Детские",
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": false,
+        "ниже -15": false
+      },
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 43,
+      "name": "Вертушки",
+      "purpose": "Семейные",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 44,
+      "name": "Бамперные лодки «Нептун»",
+      "purpose": "Семейные",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 45,
+      "name": "Башня падения «Ракета»",
+      "purpose": null,
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": true,
+        "ниже -15": false
+      },
+      "sourceStatus": "not-found-on-official-category-pages"
+    },
+    {
+      "number": 46,
+      "name": "Качели/объект на скриншоте",
+      "purpose": null,
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": true,
+        "ниже -15": false
+      },
+      "sourceStatus": "not-found-on-official-category-pages"
+    },
+    {
+      "number": 47,
+      "name": "Летучий плавник",
+      "purpose": null,
+      "temperatureWork": null,
+      "sourceStatus": "not-found-on-official-category-pages"
+    },
+    {
+      "number": 48,
+      "name": "Семейный парк «Енотия»",
+      "purpose": null,
+      "temperatureWork": null,
+      "sourceStatus": "not-found-on-official-category-pages"
+    },
+    {
+      "number": 49,
+      "name": "Паровозик",
+      "purpose": "Детские",
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": false,
+        "ниже -15": false
+      },
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 50,
+      "name": "Город машин",
+      "purpose": null,
+      "temperatureWork": null,
+      "sourceStatus": "not-found-on-official-category-pages"
+    },
+    {
+      "number": 51,
+      "name": "Самолет",
+      "purpose": "Детские",
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": true,
+        "ниже -15": false
+      },
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 52,
+      "name": "Дорожный патруль",
+      "purpose": "Детские",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 53,
+      "name": "Космодром",
+      "purpose": null,
+      "temperatureWork": null,
+      "sourceStatus": "not-found-on-official-category-pages"
+    },
+    {
+      "number": 54,
+      "name": "Шатер",
+      "purpose": null,
+      "temperatureWork": null,
+      "sourceStatus": "not-found-on-official-category-pages"
+    },
+    {
+      "number": 55,
+      "name": "Прыгающие машинки",
+      "purpose": "Детские",
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": false,
+        "ниже -15": false
+      },
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 56,
+      "name": "Дом вверх дном",
+      "purpose": "Интерактивные",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 57,
+      "name": "Секретный лабиринт",
+      "purpose": "Интерактивные",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 58,
+      "name": "Тир 3",
+      "purpose": null,
+      "temperatureWork": null,
+      "sourceStatus": "not-found-on-official-category-pages"
+    },
+    {
+      "number": 59,
+      "name": "Нитро",
+      "purpose": "Семейные",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 60,
+      "name": "Веревочный парк",
+      "purpose": null,
+      "temperatureWork": null,
+      "sourceStatus": "not-found-on-official-category-pages"
+    },
+    {
+      "number": 61,
+      "name": "Дино Сафари",
+      "purpose": "Тематические",
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": false,
+        "ниже -15": false
+      },
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 62,
+      "name": "Дино парк",
+      "purpose": "Тематические",
+      "temperatureWork": {
+        "до -5": true,
+        "до -10": true,
+        "до -15": true,
+        "ниже -15": false
+      },
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 63,
+      "name": "Зоодром «Страна Енотия»",
+      "purpose": "Тематические",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 64,
+      "name": "Топиари-парк «Айва»",
+      "purpose": "Тематические",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 65,
+      "name": "Альпака",
+      "purpose": "Тематические",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 66,
+      "name": "Хаски Лэнд",
+      "purpose": "Тематические",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    },
+    {
+      "number": 67,
+      "name": "Авиариум, Страус парк",
+      "purpose": "Тематические",
+      "temperatureWork": null,
+      "sourceStatus": "official-site"
+    }
+  ],
+  "unmappedTemperatureRows": [
+    {
+      "name": "Монорельс (Только в ручном режиме)",
+      "temperatureWork": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Чашки",
+      "temperatureWork": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "Детская цепочка Ветерок",
+      "temperatureWork": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "Каток",
+      "temperatureWork": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "Хаски парк + катания на упряжках",
+      "temperatureWork": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "Большой Авиарий",
+      "temperatureWork": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "Дино Парк",
+      "temperatureWork": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "Альпака парк",
+      "temperatureWork": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "Зоопарк Енотия",
+      "temperatureWork": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "Зеркальный лабиринт",
+      "temperatureWork": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "Дом страха",
+      "temperatureWork": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "ДВД",
+      "temperatureWork": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "Тюбинговая горка",
+      "temperatureWork": [
+        1,
+        1,
+        1,
+        0
+      ]
+    }
+  ],
+  "candidateFieldsNotAdded": [
+    "рост",
+    "возраст",
+    "часы работы",
+    "описание",
+    "сезонность",
+    "погодные оговорки",
+    "дата открытия"
+  ]
+}

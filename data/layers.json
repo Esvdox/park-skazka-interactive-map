@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "file": "Сказка по слоям .psd",
+    "file": "Сказка по слоям (3).psd",
     "canvas": {
       "width": 14735,
       "height": 6974
@@ -14,7 +14,7 @@
     "width": 3200,
     "height": 1939,
     "scale": 0.2779776043434001,
-    "base": "assets/base.webp",
+    "base": "assets/base.webp?v=psd3-clean-20261002",
     "crop": {
       "left": 0,
       "top": 0,

@@ -4,6 +4,7 @@ const state = {
   manifest: null,
   objects: [],
   objectByLayerId: new Map(),
+  propertiesByNumber: new Map(),
   statuses: new Map(),
   configs: {},
   filter: "all",
@@ -41,19 +42,31 @@ tooltip.setAttribute("role", "status");
 tooltip.hidden = true;
 elements.mapPanel.append(tooltip);
 
+const STATUS_LABELS = {
+  open: "Работает",
+  maintenance: "ТО",
+  closed: "Закрыт",
+  weather_hold: "Погода",
+  unknown: "Не задан",
+};
+
 function objectForLayer(layer) {
   return state.objectByLayerId.get(layer.id) ?? null;
 }
 
+function cleanLayerName(name) {
+  return String(name ?? "").replace(/^\s*\d{1,3}(?:\.|\))?\s+/, "").trim();
+}
+
 function displayLayerName(layer) {
   const object = objectForLayer(layer);
-  if (!object) return layer.name;
-  return `${String(object.number).padStart(2, "0")} ${object.name}`;
+  if (!object) return cleanLayerName(layer.name);
+  return cleanLayerName(object.name);
 }
 
 function layerConfig(layer) {
   const saved = state.configs[layer.id];
-  if (saved) return saved;
+  if (saved) return { ...saved, name: cleanLayerName(saved.name) || displayLayerName(layer) };
   return { name: displayLayerName(layer), conditions: "", minTempC: null, additional: [] };
 }
 
@@ -68,6 +81,36 @@ function isTemperatureAllowed(layer) {
 
 function isOpen(layer) {
   return effectiveStatus(layer) === "open" && isTemperatureAllowed(layer);
+}
+
+function propertyForLayer(layer) {
+  const object = objectForLayer(layer);
+  return object ? state.propertiesByNumber.get(object.number) ?? null : null;
+}
+
+function tooltipLines(layer) {
+  const config = layerConfig(layer);
+  const property = propertyForLayer(layer);
+  const status = effectiveStatus(layer);
+  const lines = [
+    config.name || layer.name,
+    `Статус: ${STATUS_LABELS[status] ?? status}`,
+  ];
+  if (config.conditions) lines.push(`Условия работы: ${config.conditions}`);
+  if (config.minTempC !== null && config.minTempC !== "" && !Number.isNaN(Number(config.minTempC))) {
+    lines.push(`Минимальная температура: ${config.minTempC} °C`);
+  }
+  if (property?.purpose) lines.push(`Назначение: ${property.purpose}`);
+  if (property?.temperatureWork) {
+    const workingRanges = Object.entries(property.temperatureWork)
+      .filter(([, works]) => works)
+      .map(([range]) => range);
+    lines.push(`Работает при температуре: ${workingRanges.length ? workingRanges.join(", ") : "нет данных"}`);
+  }
+  for (const item of config.additional ?? []) {
+    if (item.key && item.value) lines.push(`${item.key}: ${item.value}`);
+  }
+  return lines;
 }
 
 function renderLayers() {
@@ -109,9 +152,14 @@ function setManualStatus(id, status) {
   renderLayers();
 }
 
-function showTooltip(event, label) {
+function showTooltip(event, layer) {
   const bounds = elements.mapPanel.getBoundingClientRect();
-  tooltip.textContent = label;
+  tooltip.replaceChildren();
+  tooltipLines(layer).forEach((line, index) => {
+    const row = document.createElement(index === 0 ? "strong" : "div");
+    row.textContent = line;
+    tooltip.append(row);
+  });
   tooltip.hidden = false;
   tooltip.style.left = `${event.clientX - bounds.left + 12}px`;
   tooltip.style.top = `${event.clientY - bounds.top + 12}px`;
@@ -136,8 +184,8 @@ function createMapLayers() {
     image.style.height = `${layer.bbox.height}px`;
     if (object) {
       image.style.pointerEvents = "auto";
-      image.addEventListener("pointerenter", (event) => showTooltip(event, `${String(object.number).padStart(2, "0")} ${object.name}`));
-      image.addEventListener("pointermove", (event) => showTooltip(event, `${String(object.number).padStart(2, "0")} ${object.name}`));
+      image.addEventListener("pointerenter", (event) => showTooltip(event, layer));
+      image.addEventListener("pointermove", (event) => showTooltip(event, layer));
       image.addEventListener("pointerleave", hideTooltip);
     }
     elements.overlayRoot.append(image);
@@ -149,8 +197,8 @@ function createMapLayers() {
       hitbox.style.top = `${layer.bbox.top}px`;
       hitbox.style.width = `${layer.bbox.width}px`;
       hitbox.style.height = `${layer.bbox.height}px`;
-      hitbox.addEventListener("pointerenter", (event) => showTooltip(event, `${String(object.number).padStart(2, "0")} ${object.name}`));
-      hitbox.addEventListener("pointermove", (event) => showTooltip(event, `${String(object.number).padStart(2, "0")} ${object.name}`));
+      hitbox.addEventListener("pointerenter", (event) => showTooltip(event, layer));
+      hitbox.addEventListener("pointermove", (event) => showTooltip(event, layer));
       hitbox.addEventListener("pointerleave", hideTooltip);
       elements.overlayRoot.append(hitbox);
     }
@@ -252,18 +300,27 @@ function enablePan() {
 }
 
 async function init() {
-  const [manifestResponse, statusResponse, objectResponse] = await Promise.all([
+  const [manifestResponse, statusResponse, objectResponse, propertyResponse] = await Promise.all([
     fetch("data/layers.json"),
     fetch("data/status.json"),
     fetch("data/object-map.json"),
+    fetch("data/location-properties.json"),
   ]);
   state.manifest = await manifestResponse.json();
   const statusPayload = await statusResponse.json();
   const objectPayload = await objectResponse.json();
+  const propertyPayload = await propertyResponse.json();
   state.objects = objectPayload.objects;
+  state.propertiesByNumber = new Map(propertyPayload.properties.map((item) => [item.number, item]));
   state.objectByLayerId = new Map(state.objects.filter((item) => item.layerId).map((item) => [item.layerId, item]));
   for (const item of statusPayload.items) state.statuses.set(item.id, item);
-  try { state.configs = JSON.parse(localStorage.getItem(CONFIG_KEY) ?? "{}"); } catch { state.configs = {}; }
+  try {
+    const stored = JSON.parse(localStorage.getItem(CONFIG_KEY) ?? "{}");
+    state.configs = Object.fromEntries(Object.entries(stored).map(([id, config]) => [id, {
+      ...config,
+      name: cleanLayerName(config?.name),
+    }]));
+  } catch { state.configs = {}; }
 
   elements.base.src = state.manifest.render.base;
   createMapLayers();
