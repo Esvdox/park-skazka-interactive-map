@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Парк Сказка — оперативная карта</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="scenario.css" />
   </head>
   <body>
     <header class="topbar">
       <div><p class="eyebrow">Парк Сказка</p><h1>Оперативная карта</h1></div>
-      <div class="summary" aria-live="polite"><span><strong id="open-count">0</strong> работают</span><span><strong id="inactive-count">0</strong> не показаны</span><span id="updated-at">Данные не загружены</span></div>
+      <div class="summary" aria-live="polite"><select id="scenario-list" aria-label="Сценарии"><option value="default">Сценарии</option></select><span><strong id="open-count">0</strong> работают</span><span><strong id="inactive-count">0</strong> не показаны</span><span id="updated-at">Данные не загружены</span></div>
     </header>
     <nav class="tabs" aria-label="Разделы карты">
       <button class="tab active" data-tab="map">Карта</button><button class="tab" data-tab="search">Поиск</button><button class="tab" data-tab="settings">Параметры</button><div class="temperature-filter" role="group" aria-label="Температурный режим"><button class="temperature-button active" data-temperature="null">Выше 0</button><button class="temperature-button" data-temperature="-5">−5</button><button class="temperature-button" data-temperature="-10">−10</button><button class="temperature-button" data-temperature="-15">−15</button></div>
@@ -38,7 +39,7 @@
           <form id="layer-settings" class="settings-form">
             <div class="form-grid"><label><span>Название слоя</span><input id="setting-name" type="text" required /></label><label><span>Условия работы</span><textarea id="setting-conditions" rows="4" placeholder="Например: работает по расписанию, при отсутствии ТО и погодных ограничений"></textarea></label><label><span>Минимальная температура, °C</span><input id="setting-min-temp" type="number" step="1" placeholder="Не задано" /></label></div>
             <div class="additional-header"><div><h3>Дополнительные параметры</h3><p class="helper">Добавляйте собственные поля для выбранного слоя.</p></div><button id="add-parameter" class="secondary-button" type="button">+ Добавить параметр</button></div>
-            <div id="additional-parameters" class="additional-parameters"></div><div class="form-actions"><button class="primary-button" type="submit">Сохранить параметры</button><span id="save-message" role="status"></span></div>
+            <div id="additional-parameters" class="additional-parameters"></div><div class="scenario-header"><div><h3>Сценарии работы</h3><p class="helper">Для каждого условия задайте статус работы объекта.</p></div></div><div id="scenario-matrix" class="scenario-matrix"></div><div class="form-actions"><button class="primary-button" type="submit">Сохранить параметры</button><span id="save-message" role="status"></span></div>
           </form>
         </div>
       </section>

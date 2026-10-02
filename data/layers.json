@@ -793,7 +793,7 @@
     },
     {
       "id": "layer-053-71c999f7d1",
-      "name": "Бумеранг",
+      "name": "Башня падения",
       "sourcePath": [
         "Группа 1",
         "Бумеранг"
@@ -1702,10 +1702,154 @@
       ],
       "defaultStatus": "unknown",
       "weatherRule": null
+    },
+    {
+      "id": "layer-003-aca34be5ef",
+      "name": "Авиариум. Попугай",
+      "sourcePath": [
+        "Группа 1",
+        "Авиариум. Попугай"
+      ],
+      "sourceIndex": 3,
+      "asset": "assets/layers/layer-003-aca34be5ef.webp",
+      "bbox": {
+        "left": 3074,
+        "top": 1191,
+        "width": 151,
+        "height": 177
+      },
+      "sourceBbox": [
+        11058,
+        4283,
+        11600,
+        4920
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-004-30baa87893",
+      "name": "Страус парк. Страус",
+      "sourcePath": [
+        "Группа 1",
+        "Страус парк. Страус"
+      ],
+      "sourceIndex": 4,
+      "asset": "assets/layers/layer-004-30baa87893.webp",
+      "bbox": {
+        "left": 3105,
+        "top": 963,
+        "width": 115,
+        "height": 216
+      },
+      "sourceBbox": [
+        11169,
+        3463,
+        11582,
+        4240
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-031-90916546ff",
+      "name": "65. Дино парк",
+      "sourcePath": [
+        "Группа 1",
+        "65. Дино парк"
+      ],
+      "sourceIndex": 31,
+      "asset": "assets/layers/layer-031-90916546ff.webp",
+      "bbox": {
+        "left": 2328,
+        "top": 461,
+        "width": 819,
+        "height": 326
+      },
+      "sourceBbox": [
+        8376,
+        1657,
+        11324,
+        2828
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-062-de0c3a92eb",
+      "name": "Небесная карусель",
+      "sourcePath": [
+        "Группа 1",
+        "7. Небесная карусель"
+      ],
+      "sourceIndex": 62,
+      "asset": "assets/layers/layer-062-de0c3a92eb.webp",
+      "bbox": {
+        "left": 642,
+        "top": 457,
+        "width": 290,
+        "height": 613
+      },
+      "sourceBbox": [
+        2308,
+        1645,
+        3350,
+        3852
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-063-39fcee26a1",
+      "name": "Молния",
+      "sourcePath": [
+        "Группа 1",
+        "6. Молния"
+      ],
+      "sourceIndex": 63,
+      "asset": "assets/layers/layer-063-39fcee26a1.webp",
+      "bbox": {
+        "left": 408,
+        "top": 439,
+        "width": 562,
+        "height": 641
+      },
+      "sourceBbox": [
+        1466,
+        1579,
+        3486,
+        3886
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
+    },
+    {
+      "id": "layer-087-d666aae036",
+      "name": "32. Колесо обозрения",
+      "sourcePath": [
+        "Группа 1",
+        "32. Колесо обозрения"
+      ],
+      "sourceIndex": 87,
+      "asset": "assets/layers/layer-087-d666aae036.webp",
+      "bbox": {
+        "left": 1322,
+        "top": 52,
+        "width": 507,
+        "height": 607
+      },
+      "sourceBbox": [
+        4756,
+        188,
+        6581,
+        2370
+      ],
+      "defaultStatus": "unknown",
+      "weatherRule": null
     }
   ],
   "export": {
-    "exported": 70,
+    "exported": 76,
     "skipped": 24,
     "skippedItems": [
       {

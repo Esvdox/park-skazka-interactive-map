@@ -12,6 +12,7 @@ const state = {
   query: "",
   zoom: 1,
   temperature: null,
+  scenario: { type: "all", maintenance: "normal", repair: "normal", weather: "normal" },
   selectedLayerId: null,
 };
 
@@ -35,6 +36,8 @@ const elements = {
   settingMinTemp: document.querySelector("#setting-min-temp"),
   additional: document.querySelector("#additional-parameters"),
   saveMessage: document.querySelector("#save-message"),
+  scenarioList: document.querySelector("#scenario-list"),
+  scenarioMatrix: document.querySelector("#scenario-matrix"),
 };
 
 const tooltip = document.createElement("div");
@@ -64,28 +67,66 @@ function cleanLayerName(name) {
 }
 
 function displayLayerName(layer) {
-  const object = objectForLayer(layer);
-  if (!object) return cleanLayerName(layer.name);
-  return `${String(object.number).padStart(2, "0")} ${cleanLayerName(object.name)}`;
+  const objects = objectsForLayer(layer);
+  if (!objects.length) return cleanLayerName(layer.name);
+  return objects.map((object) => `${String(object.number).padStart(2, "0")} ${cleanLayerName(object.name)}`).join(" / ");
 }
 
 function layerConfig(layer) {
   const saved = state.configs[layer.id];
-  if (saved) return { ...saved, name: cleanLayerName(saved.name) || displayLayerName(layer) };
-  return { name: displayLayerName(layer), conditions: "", minTempC: null, additional: [] };
+  if (saved) return { ...saved, name: cleanLayerName(saved.name) || displayLayerName(layer), scenarios: normalizeScenarios(saved.scenarios, layer) };
+  return { name: displayLayerName(layer), conditions: "", minTempC: null, additional: [], scenarios: normalizeScenarios(null, layer) };
+}
+
+const TEMPERATURE_SCENARIOS = ["0", "-5", "-10", "-15"];
+const TYPE_SCENARIOS = ["Экстремальные", "Детские", "Семейные", "Интерактивные", "Тематические"];
+const SCENARIO_FIELDS = [
+  ...TEMPERATURE_SCENARIOS.map((value) => ({ group: "temperature", key: value, label: `Температура ${value === "0" ? "выше 0" : value + " °C"}` })),
+  ...TYPE_SCENARIOS.map((value) => ({ group: "type", key: value, label: `Тип: ${value}` })),
+  { group: "maintenance", key: "normal", label: "ТО: нет" },
+  { group: "maintenance", key: "maintenance", label: "ТО: да" },
+  { group: "repair", key: "normal", label: "Ремонт: нет" },
+  { group: "repair", key: "repair", label: "Ремонт: да" },
+  { group: "weather", key: "normal", label: "Погода: норма" },
+  { group: "weather", key: "weather", label: "Погода: ограничение" },
+];
+
+function normalizeScenarios(value, layer) {
+  const property = propertyForLayer(layer);
+  return {
+    temperature: Object.fromEntries(TEMPERATURE_SCENARIOS.map((key) => [key, value?.temperature?.[key] ?? (property?.temperatureWork?.[`до ${key}`] === false ? "closed" : "open")])),
+    type: Object.fromEntries(TYPE_SCENARIOS.map((key) => [key, value?.type?.[key] ?? "open"])),
+    maintenance: value?.maintenance ?? "open",
+    repair: value?.repair ?? "open",
+    weather: value?.weather ?? "open",
+  };
 }
 
 function effectiveStatus(layer) {
-  return state.statuses.get(layer.id)?.status ?? layer.defaultStatus ?? "unknown";
+  // Пока внешний поток ТОиР не передал статус, слой доступен для просмотра;
+  // явно переданный статус по-прежнему имеет приоритет.
+  return state.statuses.get(layer.id)?.status ?? layer.defaultStatus ?? "open";
 }
 
 function isTemperatureAllowed(layer) {
-  const minimum = layerConfig(layer).minTempC;
-  return minimum === null || minimum === "" || Number.isNaN(Number(minimum)) || state.temperature === null || state.temperature >= Number(minimum);
+  if (state.temperature === null) return true;
+  return layerConfig(layer).scenarios.temperature[String(state.temperature)] === "open";
+}
+
+function isScenarioAllowed(layer) {
+  const config = layerConfig(layer);
+  const property = propertyForLayer(layer);
+  const selectedType = state.scenario.type;
+  const typeStatus = selectedType === "all"
+    || (property?.purpose === selectedType && config.scenarios.type[selectedType] === "open");
+  const maintenanceStatus = state.scenario.maintenance === "normal" || config.scenarios.maintenance === "open";
+  const repairStatus = state.scenario.repair === "normal" || config.scenarios.repair === "open";
+  const weatherStatus = state.scenario.weather === "normal" || config.scenarios.weather === "open";
+  return typeStatus && maintenanceStatus && repairStatus && weatherStatus;
 }
 
 function isOpen(layer) {
-  return effectiveStatus(layer) === "open" && isTemperatureAllowed(layer);
+  return effectiveStatus(layer) === "open" && isTemperatureAllowed(layer) && isScenarioAllowed(layer);
 }
 
 function propertyForLayer(layer) {
@@ -261,6 +302,20 @@ function loadSettings() {
   elements.settingMinTemp.value = config.minTempC ?? "";
   elements.additional.replaceChildren();
   (config.additional ?? []).forEach((item) => addParameterRow(item.key, item.value));
+  renderScenarioMatrix(config.scenarios);
+}
+
+function renderScenarioMatrix(scenarios) {
+  if (!elements.scenarioMatrix) return;
+  elements.scenarioMatrix.replaceChildren();
+  for (const field of SCENARIO_FIELDS) {
+    const row = document.createElement("label");
+    row.className = "scenario-row";
+    row.innerHTML = `<span>${field.label}</span><select data-scenario-group="${field.group}" data-scenario-key="${field.key}"><option value="open">Работает</option><option value="closed">Не работает</option></select>`;
+    const select = row.querySelector("select");
+    select.value = scenarios[field.group]?.[field.key] ?? scenarios[field.group] ?? "open";
+    elements.scenarioMatrix.append(row);
+  }
 }
 
 function addParameterRow(key = "", value = "") {
@@ -280,10 +335,18 @@ function saveSettings(event) {
   const additional = [...elements.additional.querySelectorAll(".parameter-row")]
     .map((row) => ({ key: row.querySelector(".parameter-key").value.trim(), value: row.querySelector(".parameter-value").value.trim() }))
     .filter((item) => item.key);
-  state.configs[layer.id] = { name: elements.settingName.value.trim() || layer.name, conditions: elements.settingConditions.value.trim(), minTempC: elements.settingMinTemp.value === "" ? null : Number(elements.settingMinTemp.value), additional };
+  const scenarios = { temperature: {}, type: {}, maintenance: "open", repair: "open", weather: "open" };
+  elements.scenarioMatrix?.querySelectorAll("select").forEach((select) => {
+    const group = select.dataset.scenarioGroup;
+    const key = select.dataset.scenarioKey;
+    if (["maintenance", "repair", "weather"].includes(group)) scenarios[group] = select.value;
+    else scenarios[group][key] = select.value;
+  });
+  state.configs[layer.id] = { name: elements.settingName.value.trim() || layer.name, conditions: elements.settingConditions.value.trim(), minTempC: elements.settingMinTemp.value === "" ? null : Number(elements.settingMinTemp.value), additional, scenarios };
   localStorage.setItem(CONFIG_KEY, JSON.stringify(state.configs));
   renderSettingsLayerList();
   renderLayers();
+  renderScenarioList();
   elements.saveMessage.textContent = "Сохранено локально";
   setTimeout(() => { elements.saveMessage.textContent = ""; }, 2500);
 }
@@ -293,6 +356,26 @@ function switchTab(tabName) {
   document.querySelectorAll(".tab-panel").forEach((panel) => panel.classList.toggle("active", panel.dataset.panel === tabName));
   if (tabName === "settings") renderSettingsLayerList();
   if (tabName === "map") requestAnimationFrame(fitMap);
+}
+
+function renderScenarioList() {
+  if (!elements.scenarioList || !state.manifest) return;
+  elements.scenarioList.replaceChildren();
+  const defaultOption = document.createElement("option");
+  defaultOption.value = "default";
+  defaultOption.textContent = "Сценарии";
+  elements.scenarioList.append(defaultOption);
+  for (const layer of state.manifest.layers) {
+    const config = layerConfig(layer);
+    for (const field of SCENARIO_FIELDS) {
+      const status = config.scenarios[field.group]?.[field.key] ?? config.scenarios[field.group];
+      if (status !== "closed") continue;
+      const option = document.createElement("option");
+      option.value = `${layer.id}:${field.group}:${field.key}`;
+      option.textContent = `${displayLayerName(layer)} — ${field.label}: Не работает`;
+      elements.scenarioList.append(option);
+    }
+  }
 }
 
 function enablePan() {
@@ -332,7 +415,7 @@ async function init() {
     const matches = state.objects.filter((item) => {
       const names = [item.name, item.sourceName].filter(Boolean)
         .map((name) => cleanLayerName(name).toLocaleLowerCase("ru"));
-      return item.layerId === layer.id || names.includes(layerName);
+      return item.layerId === layer.id || item.layerIds?.includes(layer.id) || names.includes(layerName);
     });
     if (matches.length) state.objectsByLayerId.set(layer.id, matches);
   }
@@ -351,11 +434,31 @@ async function init() {
   elements.base.src = state.manifest.render.base;
   createMapLayers();
   renderLayers();
+  renderScenarioList();
   elements.updatedAt.textContent = statusPayload.generatedAt ? `Статусы: ${new Date(statusPayload.generatedAt).toLocaleString("ru-RU")}` : "Статусы не заданы";
   document.querySelectorAll(".tab").forEach((tab) => tab.addEventListener("click", () => switchTab(tab.dataset.tab)));
   elements.search.addEventListener("input", () => { state.query = elements.search.value; renderLayers(); });
   document.querySelectorAll(".filter-button").forEach((button) => button.addEventListener("click", () => { document.querySelectorAll(".filter-button").forEach((item) => item.classList.remove("active")); button.classList.add("active"); state.filter = button.dataset.filter; renderLayers(); }));
   document.querySelectorAll(".temperature-button").forEach((button) => button.addEventListener("click", () => { document.querySelectorAll(".temperature-button").forEach((item) => item.classList.remove("active")); button.classList.add("active"); state.temperature = button.dataset.temperature === "null" ? null : Number(button.dataset.temperature); renderLayers(); }));
+  elements.scenarioList?.addEventListener("change", () => {
+    const value = elements.scenarioList.value;
+    if (value === "default") {
+      state.scenario = { type: "all", maintenance: "normal", repair: "normal", weather: "normal" };
+      state.temperature = null;
+      renderLayers();
+      return;
+    }
+    const [, group, key] = value.split(":");
+    if (group === "temperature") {
+      state.temperature = Number(key);
+      document.querySelectorAll(".temperature-button").forEach((button) => button.classList.toggle("active", button.dataset.temperature === key));
+    } else if (group === "type") {
+      state.scenario.type = key;
+    } else if (group === "maintenance" || group === "repair" || group === "weather") {
+      state.scenario[group] = key;
+    }
+    renderLayers();
+  });
   document.querySelector("#zoom-in").addEventListener("click", () => setZoom(state.zoom * 1.25));
   document.querySelector("#zoom-out").addEventListener("click", () => setZoom(state.zoom / 1.25));
   elements.zoomValue.addEventListener("click", fitMap);
