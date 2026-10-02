@@ -4,6 +4,7 @@ const state = {
   manifest: null,
   objects: [],
   objectByLayerId: new Map(),
+  objectsByLayerId: new Map(),
   propertiesByNumber: new Map(),
   statuses: new Map(),
   configs: {},
@@ -51,7 +52,11 @@ const STATUS_LABELS = {
 };
 
 function objectForLayer(layer) {
-  return state.objectByLayerId.get(layer.id) ?? null;
+  return state.objectsByLayerId.get(layer.id)?.[0] ?? null;
+}
+
+function objectsForLayer(layer) {
+  return state.objectsByLayerId.get(layer.id) ?? [];
 }
 
 function cleanLayerName(name) {
@@ -61,7 +66,7 @@ function cleanLayerName(name) {
 function displayLayerName(layer) {
   const object = objectForLayer(layer);
   if (!object) return cleanLayerName(layer.name);
-  return cleanLayerName(object.name);
+  return `${String(object.number).padStart(2, "0")} ${cleanLayerName(object.name)}`;
 }
 
 function layerConfig(layer) {
@@ -88,9 +93,16 @@ function propertyForLayer(layer) {
   return object ? state.propertiesByNumber.get(object.number) ?? null : null;
 }
 
+function propertiesForLayer(layer) {
+  return objectsForLayer(layer)
+    .map((object) => state.propertiesByNumber.get(object.number))
+    .filter(Boolean);
+}
+
 function tooltipLines(layer) {
   const config = layerConfig(layer);
-  const property = propertyForLayer(layer);
+  const properties = propertiesForLayer(layer);
+  const property = properties[0] ?? propertyForLayer(layer);
   const status = effectiveStatus(layer);
   const lines = [
     config.name || layer.name,
@@ -107,6 +119,8 @@ function tooltipLines(layer) {
       .map(([range]) => range);
     lines.push(`Работает при температуре: ${workingRanges.length ? workingRanges.join(", ") : "нет данных"}`);
   }
+  const extraProperties = properties.slice(1).map((item) => item.name).filter(Boolean);
+  if (extraProperties.length) lines.push(`Связанные объекты: ${extraProperties.join(", ")}`);
   for (const item of config.additional ?? []) {
     if (item.key && item.value) lines.push(`${item.key}: ${item.value}`);
   }
@@ -182,14 +196,14 @@ function createMapLayers() {
     image.style.top = `${layer.bbox.top}px`;
     image.style.width = `${layer.bbox.width}px`;
     image.style.height = `${layer.bbox.height}px`;
-    if (object) {
+    if (objectsForLayer(layer).length) {
       image.style.pointerEvents = "auto";
       image.addEventListener("pointerenter", (event) => showTooltip(event, layer));
       image.addEventListener("pointermove", (event) => showTooltip(event, layer));
       image.addEventListener("pointerleave", hideTooltip);
     }
     elements.overlayRoot.append(image);
-    if (object) {
+    if (objectsForLayer(layer).length) {
       const hitbox = document.createElement("div");
       hitbox.className = "map-hitbox";
       hitbox.dataset.layerId = layer.id;
@@ -312,14 +326,26 @@ async function init() {
   const propertyPayload = await propertyResponse.json();
   state.objects = objectPayload.objects;
   state.propertiesByNumber = new Map(propertyPayload.properties.map((item) => [item.number, item]));
-  state.objectByLayerId = new Map(state.objects.filter((item) => item.layerId).map((item) => [item.layerId, item]));
+  state.objectsByLayerId = new Map();
+  for (const layer of state.manifest.layers) {
+    const layerName = cleanLayerName(layer.name).toLocaleLowerCase("ru");
+    const matches = state.objects.filter((item) => {
+      const names = [item.name, item.sourceName].filter(Boolean)
+        .map((name) => cleanLayerName(name).toLocaleLowerCase("ru"));
+      return item.layerId === layer.id || names.includes(layerName);
+    });
+    if (matches.length) state.objectsByLayerId.set(layer.id, matches);
+  }
+  state.objectByLayerId = new Map([...state.objectsByLayerId].map(([id, objects]) => [id, objects[0]]));
   for (const item of statusPayload.items) state.statuses.set(item.id, item);
   try {
     const stored = JSON.parse(localStorage.getItem(CONFIG_KEY) ?? "{}");
-    state.configs = Object.fromEntries(Object.entries(stored).map(([id, config]) => [id, {
-      ...config,
-      name: cleanLayerName(config?.name),
-    }]));
+    state.configs = Object.fromEntries(Object.entries(stored).map(([id, config]) => {
+      const layer = state.manifest.layers.find((item) => item.id === id);
+      const legacyName = cleanLayerName(config?.name);
+      const sourceName = layer ? cleanLayerName(layer.name) : "";
+      return [id, { ...config, name: layer && (!legacyName || legacyName === sourceName) ? displayLayerName(layer) : legacyName }];
+    }));
   } catch { state.configs = {}; }
 
   elements.base.src = state.manifest.render.base;
