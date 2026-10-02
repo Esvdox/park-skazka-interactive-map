@@ -37,10 +37,6 @@ const elements = {
   additional: document.querySelector("#additional-parameters"),
   saveMessage: document.querySelector("#save-message"),
   scenarioList: document.querySelector("#scenario-list"),
-  scenarioType: document.querySelector("#scenario-type"),
-  scenarioWeather: document.querySelector("#scenario-weather"),
-  scenarioMaintenance: document.querySelector("#scenario-maintenance"),
-  scenarioRepair: document.querySelector("#scenario-repair"),
   scenarioMatrix: document.querySelector("#scenario-matrix"),
 };
 
@@ -114,7 +110,9 @@ function normalizeScenarios(value, layer) {
 function effectiveStatus(layer) {
   // Пока внешний поток ТОиР не передал статус, слой доступен для просмотра;
   // явно переданный статус по-прежнему имеет приоритет.
-  return state.statuses.get(layer.id)?.status ?? layer.defaultStatus ?? "open";
+  const liveStatus = state.statuses.get(layer.id)?.status;
+  if (liveStatus) return liveStatus;
+  return layer.defaultStatus && layer.defaultStatus !== "unknown" ? layer.defaultStatus : "open";
 }
 
 function isTemperatureAllowed(layer) {
@@ -123,10 +121,12 @@ function isTemperatureAllowed(layer) {
 }
 
 function syncScenarioControls() {
-  if (elements.scenarioType) elements.scenarioType.value = state.scenario.type;
-  if (elements.scenarioWeather) elements.scenarioWeather.value = state.scenario.weather;
-  if (elements.scenarioMaintenance) elements.scenarioMaintenance.value = state.scenario.maintenance;
-  if (elements.scenarioRepair) elements.scenarioRepair.value = state.scenario.repair;
+  document.querySelectorAll(".scenario-button").forEach((button) => {
+    const group = button.dataset.scenarioGroup;
+    const value = group === "temperature" ? Number(button.dataset.temperature) : button.dataset.scenarioValue;
+    const active = group === "temperature" ? state.temperature === value : state.scenario[group] === value;
+    button.classList.toggle("active", active);
+  });
 }
 
 function isScenarioAllowed(layer) {
@@ -455,7 +455,12 @@ async function init() {
   document.querySelectorAll(".tab").forEach((tab) => tab.addEventListener("click", () => switchTab(tab.dataset.tab)));
   elements.search.addEventListener("input", () => { state.query = elements.search.value; renderLayers(); });
   document.querySelectorAll(".filter-button").forEach((button) => button.addEventListener("click", () => { document.querySelectorAll(".filter-button").forEach((item) => item.classList.remove("active")); button.classList.add("active"); state.filter = button.dataset.filter; renderLayers(); }));
-  document.querySelectorAll(".temperature-button").forEach((button) => button.addEventListener("click", () => { document.querySelectorAll(".temperature-button").forEach((item) => item.classList.remove("active")); button.classList.add("active"); state.temperature = button.dataset.temperature === "null" ? null : Number(button.dataset.temperature); renderLayers(); }));
+  document.querySelectorAll(".temperature-button").forEach((button) => button.addEventListener("click", () => {
+    const value = Number(button.dataset.temperature);
+    state.temperature = state.temperature === value ? null : value;
+    syncScenarioControls();
+    renderLayers();
+  }));
   elements.scenarioList?.addEventListener("change", () => {
     const value = elements.scenarioList.value;
     if (value === "default") {
@@ -477,10 +482,15 @@ async function init() {
     syncScenarioControls();
     renderLayers();
   });
-  elements.scenarioType?.addEventListener("change", () => { state.scenario.type = elements.scenarioType.value; renderLayers(); });
-  elements.scenarioWeather?.addEventListener("change", () => { state.scenario.weather = elements.scenarioWeather.value; renderLayers(); });
-  elements.scenarioMaintenance?.addEventListener("change", () => { state.scenario.maintenance = elements.scenarioMaintenance.value; renderLayers(); });
-  elements.scenarioRepair?.addEventListener("change", () => { state.scenario.repair = elements.scenarioRepair.value; renderLayers(); });
+  document.querySelectorAll(".scenario-button[data-scenario-group]").forEach((button) => button.addEventListener("click", () => {
+    const group = button.dataset.scenarioGroup;
+    if (group === "temperature") return;
+    const value = button.dataset.scenarioValue;
+    const resetValue = group === "type" ? "all" : "normal";
+    state.scenario[group] = state.scenario[group] === value ? resetValue : value;
+    syncScenarioControls();
+    renderLayers();
+  }));
   document.querySelector("#zoom-in").addEventListener("click", () => setZoom(state.zoom * 1.25));
   document.querySelector("#zoom-out").addEventListener("click", () => setZoom(state.zoom / 1.25));
   elements.zoomValue.addEventListener("click", fitMap);

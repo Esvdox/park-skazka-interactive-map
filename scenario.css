@@ -17,14 +17,27 @@
   padding: 4px 10px;
 }
 
-.scenario-controls select {
+.scenario-button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.scenario-button {
   min-height: 30px;
   padding: 4px 7px;
   border: 1px solid #9aaab5;
-  border-radius: 3px;
+  border-radius: 2px;
   background: #fff;
   color: #17212b;
   font-size: 12px;
+  cursor: pointer;
+}
+
+.scenario-button.active {
+  background: #267691;
+  border-color: #267691;
+  color: #fff;
 }
 
 .scenario-header {
@@ -65,6 +78,6 @@
 @media (max-width: 780px) {
   #scenario-list { max-width: 100%; }
   .scenario-controls { width: 100%; margin-left: 0; flex-wrap: wrap; padding: 4px 8px; }
-  .scenario-controls select { flex: 1 1 145px; }
+  .scenario-button-group { flex: 1 1 100%; }
   .scenario-row { grid-template-columns: 1fr; }
 }
