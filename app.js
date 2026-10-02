@@ -1,4 +1,44 @@
 const CONFIG_KEY = "park-skazka-map-layer-config-v1";
+const API_BASE = String(window.PARK_MAP_API_BASE ?? "").replace(/\/$/, "");
+
+async function syncLayerConditionsToApi(layerId, scenarios) {
+  if (!API_BASE) return;
+  const response = await fetch(`${API_BASE}/api/v1/map/layers/${encodeURIComponent(layerId)}/conditions`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      maintenance: scenarios.maintenance.maintenance === "open",
+      rain: scenarios.weather.weather === "open",
+      repair: scenarios.repair.repair === "open",
+    }),
+  });
+  if (!response.ok) throw new Error(`API conditions: HTTP ${response.status}`);
+}
+
+async function loadLayerConditionsFromApi() {
+  if (!API_BASE) return;
+  try {
+    const response = await fetch(`${API_BASE}/api/v1/map/layer-conditions`);
+    if (!response.ok) throw new Error(`API conditions: HTTP ${response.status}`);
+    const payload = await response.json();
+    for (const item of payload.items ?? []) {
+      const layer = state.manifest.layers.find((candidate) => candidate.id === item.layerId);
+      if (!layer) continue;
+      const current = layerConfig(layer);
+      state.configs[layer.id] = {
+        ...current,
+        scenarios: {
+          ...current.scenarios,
+          maintenance: { ...current.scenarios.maintenance, maintenance: item.maintenance ? "open" : "closed" },
+          weather: { ...current.scenarios.weather, weather: item.rain ? "open" : "closed" },
+          repair: { ...current.scenarios.repair, repair: item.repair ? "open" : "closed" },
+        },
+      };
+    }
+  } catch (error) {
+    console.warn("Не удалось загрузить условия из API", error);
+  }
+}
 
 const state = {
   manifest: null,
@@ -90,12 +130,12 @@ const TYPE_LABELS = {
 const SCENARIO_FIELDS = [
   ...TEMPERATURE_SCENARIOS.map((value) => ({ group: "temperature", key: value, label: `Температура ${value === "0" ? "выше 0" : value + " °C"}` })),
   ...TYPE_SCENARIOS.map((value) => ({ group: "type", key: value, label: `Тип: ${TYPE_LABELS[value]}` })),
-  { group: "maintenance", key: "normal", label: "ТО: нет" },
-  { group: "maintenance", key: "maintenance", label: "ТО: да" },
-  { group: "repair", key: "normal", label: "Ремонт: нет" },
-  { group: "repair", key: "repair", label: "Ремонт: да" },
-  { group: "weather", key: "normal", label: "Погода: норма" },
-  { group: "weather", key: "weather", label: "Погода: ограничение" },
+  { group: "maintenance", key: "normal", label: "ТО" },
+  { group: "maintenance", key: "maintenance", label: "ТО" },
+  { group: "repair", key: "normal", label: "Ремонт" },
+  { group: "repair", key: "repair", label: "Ремонт" },
+  { group: "weather", key: "normal", label: "Дождь" },
+  { group: "weather", key: "weather", label: "Дождь" },
 ];
 
 function normalizeScenarios(value, layer) {
@@ -103,7 +143,7 @@ function normalizeScenarios(value, layer) {
   const normalizeCondition = (group, activeKey) => {
     const source = value?.[group];
     if (typeof source === "string") return { normal: "open", [activeKey]: source };
-    return { normal: source?.normal ?? "open", [activeKey]: source?.[activeKey] ?? "open" };
+    return { normal: source?.normal ?? "open", [activeKey]: source?.[activeKey] ?? "closed" };
   };
   return {
     temperature: Object.fromEntries(TEMPERATURE_SCENARIOS.map((key) => [key, value?.temperature?.[key] ?? (property?.temperatureWork?.[`до ${key}`] === false ? "closed" : "open")])),
@@ -142,9 +182,9 @@ function isScenarioAllowed(layer) {
   const selectedType = state.scenario.type;
   const typeStatus = selectedType === "all"
     || (property?.purpose === selectedType && config.scenarios.type[selectedType] === "open");
-  const maintenanceStatus = config.scenarios.maintenance[state.scenario.maintenance] === "open";
-  const repairStatus = config.scenarios.repair[state.scenario.repair] === "open";
-  const weatherStatus = config.scenarios.weather[state.scenario.weather] === "open";
+  const maintenanceStatus = state.scenario.maintenance === "normal" || config.scenarios.maintenance.maintenance !== "open";
+  const repairStatus = state.scenario.repair === "normal" || config.scenarios.repair.repair !== "open";
+  const weatherStatus = state.scenario.weather === "normal" || config.scenarios.weather.weather !== "open";
   return typeStatus && maintenanceStatus && repairStatus && weatherStatus;
 }
 
@@ -334,8 +374,8 @@ function renderScenarioMatrix(scenarios) {
   for (const field of SCENARIO_FIELDS) {
     const row = document.createElement("label");
     row.className = "scenario-row";
-    const positiveLabel = field.group === "type" ? "Да" : "Работает";
-    const negativeLabel = field.group === "type" ? "Нет" : "Не работает";
+    const positiveLabel = field.group === "temperature" ? "Работает" : "Да";
+    const negativeLabel = field.group === "temperature" ? "Не работает" : "Нет";
     row.innerHTML = `<span>${field.label}</span><select data-scenario-group="${field.group}" data-scenario-key="${field.key}"><option value="open">${positiveLabel}</option><option value="closed">${negativeLabel}</option></select>`;
     const select = row.querySelector("select");
     select.value = scenarios[field.group]?.[field.key] ?? scenarios[field.group] ?? "open";
@@ -360,7 +400,7 @@ function saveSettings(event) {
   const additional = [...elements.additional.querySelectorAll(".parameter-row")]
     .map((row) => ({ key: row.querySelector(".parameter-key").value.trim(), value: row.querySelector(".parameter-value").value.trim() }))
     .filter((item) => item.key);
-  const scenarios = { temperature: {}, type: {}, maintenance: { normal: "open", maintenance: "open" }, repair: { normal: "open", repair: "open" }, weather: { normal: "open", weather: "open" } };
+  const scenarios = { temperature: {}, type: {}, maintenance: { normal: "open", maintenance: "closed" }, repair: { normal: "open", repair: "closed" }, weather: { normal: "open", weather: "closed" } };
   elements.scenarioMatrix?.querySelectorAll("select").forEach((select) => {
     const group = select.dataset.scenarioGroup;
     const key = select.dataset.scenarioKey;
@@ -369,6 +409,7 @@ function saveSettings(event) {
   });
   state.configs[layer.id] = { name: elements.settingName.value.trim() || layer.name, conditions: elements.settingConditions.value.trim(), minTempC: elements.settingMinTemp.value === "" ? null : Number(elements.settingMinTemp.value), additional, scenarios };
   localStorage.setItem(CONFIG_KEY, JSON.stringify(state.configs));
+  syncLayerConditionsToApi(layer.id, scenarios).catch((error) => console.warn(error));
   renderSettingsLayerList();
   renderLayers();
   renderScenarioList();
@@ -455,6 +496,7 @@ async function init() {
       return [id, { ...config, name: layer && (!legacyName || legacyName === sourceName) ? displayLayerName(layer) : legacyName }];
     }));
   } catch { state.configs = {}; }
+  await loadLayerConditionsFromApi();
 
   elements.base.src = state.manifest.render.base;
   createMapLayers();
