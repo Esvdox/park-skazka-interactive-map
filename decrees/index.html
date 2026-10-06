@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#162c2a"><title>Карта постановлений · Парк «Сказка»</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div><span class="eyebrow">ПАРК «СКАЗКА» · СХЕМА ОБЪЕКТОВ</span><h1>Карта постановлений</h1></div><nav><a href="../">Карта парка ↗</a><a href="assets/source.webp" target="_blank" rel="noopener">Исходная схема ↗</a><a href="data/objects.csv" download>Скачать реестр ↓</a></nav></header>
+<main>
+<aside><div class="intro"><span class="eyebrow">636-ПП / 529-ПП · БЕЗ НТО</span><h2>Объекты и основания</h2><p>Категории и названия перенесены из предоставленной схемы.</p></div>
+<label class="search-label" for="search">Поиск по номеру или названию</label><input id="search" type="search" placeholder="Например: 36 или ДиноПарк" autocomplete="off">
+<div id="filters" class="filters" aria-label="Категории объектов"></div><div class="list-head"><span id="count" aria-live="polite">Загрузка реестра…</span><button id="clear" class="text-button">Сбросить</button></div><div id="list" class="list"></div>
+<details class="notes"><summary>Что подтверждает эта карта</summary><p>Карта показывает классификацию исходной схемы. Она не подтверждает разрешения, законность размещения, кадастровые границы или действующую редакцию постановлений.</p><p>Дата схемы не указана. Геопривязки нет. Метки оцифрованы приблизительно; повторные вхождения номера не являются отдельными строками реестра. Фильтры меняют метки и список, а цветная подложка сохраняется.</p><p>Названия «Аттракцион №…» сохранены без догадок. НТО исключены согласно имени файла.</p><a href="assets/legend.webp" target="_blank" rel="noopener">Экспликация исходной схемы ↗</a></details>
+</aside>
+<section class="map-area" aria-label="Интерактивная схема"><div class="map-top"><span><i></i> <b id="map-label">Вся территория</b></span><span class="hint">Колесо — масштаб · перетаскивание — перемещение</span></div>
+<div id="viewport" tabindex="0" role="region" aria-label="Карта. Клавиши плюс и минус меняют масштаб, стрелки перемещают карту, 0 показывает всю схему."><div id="world"><img id="map" src="assets/map.webp" alt="Схема объектов Парка Сказка с номерами и цветами категорий" draggable="false"><div id="markers"></div></div><div id="loading">Загружаем подробную схему…</div></div>
+<div class="controls"><button id="plus" aria-label="Приблизить">+</button><button id="minus" aria-label="Отдалить">−</button><button id="fit">Вся схема</button><button id="dense">Объекты крупно</button><button id="toggle" aria-pressed="true">Метки</button><button id="fullscreen" aria-label="Полноэкранная карта">⛶</button></div>
+<div id="card" class="card" hidden><button id="close" aria-label="Закрыть карточку">×</button><span id="card-group" class="eyebrow"></span><h2 id="card-title"></h2><p id="card-basis"></p><p class="fine">Положение метки приблизительное. Сведения — по исходной схеме.</p><div id="locations"></div></div>
+<footer><span id="zoom">Масштаб</span><span>Оцифровка: 06.10.2026 · точность исходной схемы</span></footer></section>
+</main><script src="app.js"></script></body></html>
