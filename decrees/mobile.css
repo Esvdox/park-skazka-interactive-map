@@ -35,3 +35,25 @@
   header{height:48px;padding:5px 12px}header .eyebrow{display:none}h1{font-size:18px}.mobile-nav{padding-top:3px;padding-bottom:calc(3px + env(safe-area-inset-bottom))}.mobile-nav button{height:44px}
   .mobile-fullscreen-label{display:none}.map-top{display:none}.controls{grid-template-columns:44px 44px 1fr 1fr 70px 44px;padding:5px 8px}#toggle,#fullscreen{grid-column:auto}.card{max-height:60%;width:48%;left:auto}.filters{grid-template-columns:repeat(3,1fr);margin:6px 0}.filter:first-child{grid-column:auto}.search-label{display:none}aside{padding-top:8px}.filter{min-height:44px}.list-head{padding:0}
 }
+
+/* Stable browser-toolbar height and native single-finger document scrolling. */
+.mobile-gesture-help{display:none}
+@media(max-width:900px){
+  html,body{height:auto;overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:auto}
+  body{height:auto;min-height:100svh;padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+  main{flex:none;height:calc(100svh - 128px - env(safe-area-inset-top) - env(safe-area-inset-bottom));min-height:250px}
+  #viewport,#viewport button{touch-action:pan-y}
+  .mobile-nav{position:sticky;bottom:0;z-index:40;padding-bottom:calc(8px + env(safe-area-inset-bottom));min-height:60px}
+  .mobile-gesture-help{display:block;min-height:60px;padding:10px 16px;background:#fcfcf9;color:#607257;font-size:12px}
+  body:not([data-mobile-view=map]) .mobile-gesture-help{display:none}
+  .map-area:fullscreen{height:100svh;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+}
+@media(max-width:900px) and (max-height:500px){main{height:calc(100svh - 100px - env(safe-area-inset-top) - env(safe-area-inset-bottom));min-height:150px}.mobile-nav{min-height:52px}}
+@media(max-width:900px){body{padding-bottom:calc(62px + env(safe-area-inset-bottom))}main{height:calc(100svh - 130px - env(safe-area-inset-top) - env(safe-area-inset-bottom))}.mobile-nav{position:fixed;left:env(safe-area-inset-left);right:env(safe-area-inset-right);bottom:0;height:calc(62px + env(safe-area-inset-bottom))}}
+@media(max-width:900px) and (max-height:500px){body{padding-bottom:calc(56px + env(safe-area-inset-bottom))}main{height:calc(100svh - 104px - env(safe-area-inset-top) - env(safe-area-inset-bottom))}.mobile-nav{height:calc(56px + env(safe-area-inset-bottom))}}
+
+@media(max-width:900px){
+  body[data-mobile-view=objects] main,body[data-mobile-view=info] main{height:auto;min-height:calc(100svh - 130px - env(safe-area-inset-top) - env(safe-area-inset-bottom))}
+  body[data-mobile-view=objects] aside,body[data-mobile-view=info] aside{height:auto;overflow:visible;padding-bottom:16px}
+  .list{flex:none;max-height:none;overflow:visible;overscroll-behavior:auto}
+}
